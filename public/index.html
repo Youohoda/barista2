@@ -99,13 +99,25 @@ async function initClerk(){
    return;
   }
   const clerkDomain=atob(key.split('_')[2]).slice(0,-1);
-  const loadScript=(src)=>new Promise((resolve,reject)=>{
-   if(document.querySelector(`script[src="${src}"]`)) return resolve();
-   const s=document.createElement('script');s.src=src;s.async=true;s.crossOrigin='anonymous';s.onload=resolve;s.onerror=()=>reject(new Error('تعذر تحميل مكوّنات تسجيل الدخول'));document.head.appendChild(s);
+  const loadScript=(src,attrs={})=>new Promise((resolve,reject)=>{
+   const existing=document.querySelector(`script[src="${src}"]`);
+   if(existing){
+    if(existing.dataset.loaded==='true') return resolve();
+    existing.addEventListener('load',()=>resolve(),{once:true});
+    existing.addEventListener('error',()=>reject(new Error('تعذر تحميل مكوّنات تسجيل الدخول')),{once:true});
+    return;
+   }
+   const s=document.createElement('script');
+   s.src=src;s.async=true;s.crossOrigin='anonymous';
+   Object.entries(attrs).forEach(([name,value])=>s.setAttribute(name,value));
+   const timer=setTimeout(()=>reject(new Error('انتهت مهلة تحميل Clerk — تحقق من إعدادات الدومين في Clerk ثم أعد النشر.')),15000);
+   s.onload=()=>{clearTimeout(timer);s.dataset.loaded='true';resolve()};
+   s.onerror=()=>{clearTimeout(timer);reject(new Error('تعذر تحميل ClerkJS من نطاق Clerk.'))};
+   document.head.appendChild(s);
   });
   await loadScript(`https://${clerkDomain}/npm/@clerk/ui@1/dist/ui.browser.js`);
-  await loadScript(`https://${clerkDomain}/npm/@clerk/clerk-js@6/dist/clerk.browser.js`);
-  if(!window.Clerk) throw new Error('ClerkJS لم يتم تحميله');
+  await loadScript(`https://${clerkDomain}/npm/@clerk/clerk-js@6/dist/clerk.browser.js`,{'data-clerk-publishable-key':key});
+  if(!window.Clerk) throw new Error('ClerkJS لم يتم تحميله. أعد نشر المشروع بعد التأكد من CLERK_PUBLISHABLE_KEY.');
   await window.Clerk.load({ui:{ClerkUI:window.__internal_ClerkUICtor}});
   state.clerk=window.Clerk;
   const appearance={variables:{colorBackground:'#0e1015',colorText:'#f5f7fb',colorPrimary:'#f1f2f4',colorTextOnPrimary:'#08090c',colorInputBackground:'#0a0c10',colorInputText:'#f5f7fb',colorTextSecondary:'#aeb5c0',borderRadius:'14px'},elements:{card:'cl-card',socialButtonsBlockButton:'cl-socialButtonsBlockButton',formButtonPrimary:'cl-formButtonPrimary',formFieldInput:'cl-formFieldInput',formFieldLabel:'cl-formFieldLabel',headerTitle:'cl-headerTitle',headerSubtitle:'cl-headerSubtitle',footerActionLink:'cl-footerActionLink'}};
