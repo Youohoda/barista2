@@ -61,7 +61,7 @@ async function request(url, key, payload, extra={}) {
   if (!r.ok) throw new Error(data?.error?.message || data?.message || `Provider HTTP ${r.status}`);
   return data;
 }
-export async function providerChat(messages, preferred='barista-just') {
+export async function providerChat(messages, preferred='barista-just', attachments=[]) {
   const plans = {
     'barista-just': [['groq', process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'],['openrouter', process.env.OPENROUTER_MODEL || 'openrouter/free'],['cohere', process.env.COHERE_MODEL || 'command-a-03-2025']],
     'barista-fast': [['groq','llama-3.1-8b-instant'],['openrouter',process.env.OPENROUTER_MODEL || 'openrouter/free']],
@@ -69,14 +69,33 @@ export async function providerChat(messages, preferred='barista-just') {
     'barista-reasoning': [['openrouter',process.env.OPENROUTER_MODEL || 'openrouter/free'],['groq',process.env.GROQ_MODEL || 'llama-3.3-70b-versatile']]
   };
   const errors=[];
+  const imageAttachments=(attachments||[]).filter(a=>a?.type==='image' && typeof a.dataUrl==='string');
   for (const [p, model] of (plans[preferred] || plans['barista-just'])) {
+    if (imageAttachments.length && p !== 'openrouter') continue;
     for (const key of keys(p.toUpperCase())) {
       try {
-        if (p === 'groq') { const d=await request('https://api.groq.com/openai/v1/chat/completions',key,{model,messages,temperature:.35}); return {text:d.choices?.[0]?.message?.content||'',provider:p,model}; }
-        if (p === 'openrouter') { const d=await request('https://openrouter.ai/api/v1/chat/completions',key,{model,messages,temperature:.35},{'HTTP-Referer':process.env.BARISTA_APP_URL||'https://barista-ai.vercel.app','X-Title':'Barista AI'}); return {text:d.choices?.[0]?.message?.content||'',provider:p,model}; }
-        const d=await request('https://api.cohere.com/v2/chat',key,{model,messages,temperature:.35}); return {text:d.message?.content?.map(x=>x.text||'').join('')||'',provider:p,model};
+        if (p === 'groq') {
+          const d=await request('https://api.groq.com/openai/v1/chat/completions',key,{model,messages,temperature:.35});
+          return {text:d.choices?.[0]?.message?.content||'',provider:p,model};
+        }
+        if (p === 'openrouter') {
+          let payloadMessages=messages;
+          if (imageAttachments.length) {
+            const last=[...messages].reverse().find(m=>m.role==='user');
+            if (last) {
+              const parts=[{type:'text',text:last.content||'حلل الصورة المرفقة وأجب عن طلبي.'}];
+              for(const a of imageAttachments.slice(0,4)) parts.push({type:'image_url',image_url:{url:a.dataUrl}});
+              payloadMessages=messages.map(m=>m===last?{...m,content:parts}:m);
+            }
+          }
+          const d=await request('https://openrouter.ai/api/v1/chat/completions',key,{model,messages:payloadMessages,temperature:.35},{'HTTP-Referer':process.env.BARISTA_APP_URL||'https://barista-ai.vercel.app','X-Title':'Barista AI'});
+          return {text:d.choices?.[0]?.message?.content||'',provider:p,model};
+        }
+        const d=await request('https://api.cohere.com/v2/chat',key,{model,messages,temperature:.35});
+        return {text:d.message?.content?.map(x=>x.text||'').join('')||'',provider:p,model};
       } catch(e){ errors.push(`${p}: ${e.message}`); }
     }
   }
+  if(imageAttachments.length && !keys('OPENROUTER'.toUpperCase()).length) throw new Error('تحليل الصور يحتاج مفتاح OpenRouter صالح.');
   throw new Error(errors.length ? `كل مزودي الذكاء الاصطناعي فشلوا: ${errors.join(' | ')}` : 'لم يتم ضبط أي API key.');
 }
