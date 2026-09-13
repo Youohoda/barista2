@@ -1,12 +1,11 @@
-# Barista AI
+# Barista AI — V9 UI rebuild
 
-Barista AI is a Vercel-ready AI chat application with Clerk authentication, MongoDB persistence, Premium plans, activation codes, image/file attachments, multiple AI providers, and an owner-only control panel.
+نسخة جديدة مبنية على Barista-AI-V8-Replit-Style مع إعادة ترتيب كاملة للواجهة، دعم أفضل للموبايل والكمبيوتر، وإصلاح تدفق Clerk.
 
 ## Vercel Environment Variables
 
-Keep secrets only in Vercel Environment Variables. The frontend reads the Clerk publishable key through `/api/config`; the Clerk secret key and provider keys stay server-side.
+ضع القيم من عندك في Vercel → Settings → Environment Variables:
 
-Required variables used by this build:
 - GROQ_API_KEY_1
 - GROQ_API_KEY_2
 - GROQ_API_KEY_3
@@ -18,9 +17,25 @@ Required variables used by this build:
 - MONGODB_URI
 - CLERK_PUBLISHABLE_KEY
 - CLERK_SECRET_KEY
+- BARISTA_OWNER_EMAIL (اختياري، الافتراضي هو بريد المالك المحدد في المشروع)
 
-Optional: BARISTA_OWNER_EMAIL (defaults server-side to the configured owner email for this project).
+لا يوجد ملف `.env` داخل هذه النسخة.
 
-## Owner
+## Vercel
 
-The owner-only secret command is `youo88`. The backend verifies the signed-in Clerk email before allowing the owner panel. Premium redemption code `y7` remains a separate user activation code.
+المشروع يستخدم `api/*.js` كـ Serverless Functions تلقائيًا. تم تبسيط `vercel.json` حتى لا يظهر خطأ unmatched function pattern.
+
+## أهم التغييرات
+
+- Responsive حقيقي للموبايل والكمبيوتر.
+- Sidebar على الكمبيوتر وDrawer على الموبايل.
+- قائمة + تفتح أولًا بدل فتح مدير الملفات مباشرة.
+- رفع الصور من + مع إرسالها لموديل الرؤية عبر OpenRouter.
+- دعم ملفات النصوص والكود داخل المحادثة.
+- RTL/LTR تلقائي للرسائل والكود.
+- Premium وكود التفعيل داخل لوحة Premium فقط.
+- Account panel مع عداد الاستخدام وزر تصفير العداد.
+- Owner Control منفصل للمستخدمين والأكواد وتصفير الاستخدام.
+- ClerkJS محمّل بالطريقة الرسمية الحالية من Clerk.
+- Barista Fast يبدأ بـ Groq لسرعة أفضل ثم fallback.
+- لا توجد مفاتيح API داخل الملفات.
