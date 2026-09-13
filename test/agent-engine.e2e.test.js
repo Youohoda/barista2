@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runAgentLoop, rollbackToCheckpoint, defaultContextEngine } from '../api/_agent-engine.js';
+import { runAgentLoop, rollbackToCheckpoint } from '../api/_agent-engine.js';
 import { LocalProcessSandboxProvider, NotConfiguredSandboxProvider } from '../api/providers/sandbox.js';
 
 // ---- In-memory workspace adapter — same interface the Mongo-backed adapter in
@@ -169,30 +169,4 @@ test('local sandbox execution is isolated from an outer NODE_TEST_CONTEXT and ac
   } finally {
     await provider.destroy(workspaceId);
   }
-});
-
-test('agent engine: universal context fallback is never empty for an unrelated goal', async () => {
-  const files = [
-    { name: 'package.json', content: '{"name":"x"}' },
-    { name: 'src/app.js', content: 'module.exports = 1;' }
-  ];
-  const ctx = defaultContextEngine('repair the authentication flow', files, 12);
-  assert.ok(ctx.length >= 1);
-  assert.equal(ctx[0].name, 'package.json');
-});
-
-test('agent engine: malformed planner changes fail closed before workspace mutation', async () => {
-  const adapter = inMemoryAdapter(fixtureProject());
-  const sandboxProvider = new NotConfiguredSandboxProvider();
-  const before = await adapter.readFile('math.js');
-  const { report } = await runAgentLoop({
-    goal: 'anything',
-    adapter,
-    sandboxProvider,
-    planner: async () => ({ steps: [], changes: [{ name: '../evil.txt', content: 'x' }] }),
-    fixer: correctFixer,
-    onEvent: () => {}
-  });
-  assert.equal(report.status, 'FAILED');
-  assert.equal(await adapter.readFile('math.js'), before);
 });

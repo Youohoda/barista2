@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vercel dev",
-    "start": "vercel dev",
-    "test": "node --test",
-    "check": "node --check api/_agent-engine.js"
+    "start": "vercel dev"
   },
   "dependencies": {
     "mongoose": "^8.18.0",

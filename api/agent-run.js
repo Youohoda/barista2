@@ -102,7 +102,7 @@ export default async function handler(req, res) {
       }
 
       const projectId = String(b.projectId || '');
-      const goal = String(b.goal || '').trim().slice(0, 4000);
+      const goal = String(b.goal || '').trim().slice(0, 2000);
       if (!projectId || !mongoose.isValidObjectId(projectId)) return json(res, 400, { error: 'projectId صالح مطلوب' });
       if (!goal) return json(res, 400, { error: 'اكتب هدف الـ Agent (مثلاً: \"Fix the login bug\")' });
 

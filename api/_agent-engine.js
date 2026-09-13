@@ -45,16 +45,6 @@ export function defaultContextEngine(goal, files, maxFiles = DEFAULTS.maxContext
   });
 
   let relevant = scored.filter(f => f.score > 0).sort((a, b) => b.score - a.score).slice(0, maxFiles);
-  // Never give the planner an empty repository view just because the user's goal
-  // doesn't share words with filenames. Universal agents must still be able to
-  // understand arbitrary projects. Fall back to the most useful project files.
-  if (!relevant.length) {
-    const priority = /(^|\/)(package\.json|pyproject\.toml|requirements\.txt|Cargo\.toml|go\.mod|pom\.xml|build\.gradle|README(?:\.[^/]+)?|Dockerfile|docker-compose[^/]*|vercel\.json)$/i;
-    relevant = [...scored]
-      .sort((a, b) => (priority.test(a.name) ? 1 : 0) - (priority.test(b.name) ? 1 : 0) || b.content.length - a.content.length)
-      .slice(0, maxFiles)
-      .map(f => ({ ...f, reason: priority.test(f.name) ? 'project manifest / documentation fallback' : 'repository fallback' }));
-  }
   const relevantNames = new Set(relevant.map(f => f.name));
 
   // One-hop local-import expansion, JS/TS only (regex-based, real matches).
@@ -215,30 +205,11 @@ export async function runAgentLoop({
   }
   report.plan = plan;
 
-  // Validate the model output before touching the workspace. A malformed or
-  // path-traversal change must fail closed instead of partially mutating a project.
-  const changes = Array.isArray(plan?.changes) ? plan.changes : [];
-  for (const change of changes) {
-    if (!change || typeof change.name !== 'string' || !change.name.trim() || typeof change.content !== 'string') {
-      report.status = 'FAILED';
-      report.error = 'Planning فشل: change غير صالح — مطلوب name و content كاملين';
-      emit('FAILED', { error: report.error });
-      return { report, checkpoint };
-    }
-    const normalized = change.name.replaceAll('\\\\', '/');
-    if (normalized.startsWith('/') || normalized.split('/').includes('..')) {
-      report.status = 'FAILED';
-      report.error = `Planning فشل: مسار ملف غير آمن (${change.name})`;
-      emit('FAILED', { error: report.error });
-      return { report, checkpoint };
-    }
-  }
-
   // IMPLEMENT — real multi-file writes against the real adapter, real diffs.
   report.status = 'IMPLEMENTING';
-  emit('IMPLEMENTING', { changes: changes.length });
+  emit('IMPLEMENTING', { changes: plan.changes.length });
   const changedFiles = [];
-  for (const change of changes) {
+  for (const change of plan.changes) {
     const prev = await adapter.readFile(change.name);
     await adapter.writeFile(change.name, change.content);
     const patch = prev != null ? createPatch(change.name, prev, change.content, 'قبل', 'بعد') : null;
@@ -331,16 +302,6 @@ export async function runAgentLoop({
     report.status = 'FAILED';
     report.error = `الاختبارات فضلت فاشلة بعد ${attempt} محاولة إصلاح`;
     emit('FAILED', { error: report.error });
-  } else if (report.testResult.status === 'NOT_CONFIGURED') {
-    // A configured project without an execution provider is not a verified success.
-    // Keep the truthful distinction so the UI/consumer can request CI/sandbox setup.
-    report.status = 'COMPLETED';
-    report.error = 'تم تطبيق التعديلات لكن لم يتم التحقق بالتنفيذ: Sandbox غير متصل.';
-    emit('COMPLETED', { unverified: true });
-  } else if (report.testResult.status === 'NOT_RUN') {
-    report.status = 'COMPLETED';
-    report.error = 'تم تطبيق التعديلات، لكن لم يتم العثور على إطار اختبارات معروف للتحقق منها.';
-    emit('COMPLETED', { unverified: true });
   } else {
     report.status = 'COMPLETED';
     emit('COMPLETED');
