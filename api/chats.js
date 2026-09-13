@@ -7,3 +7,11 @@ export default async function handler(req,res){
   return json(res,405,{error:'Method not allowed'});
  }catch(e){return json(res,e.status||500,{error:e.message||'تعذر الوصول للمحادثات'});}
 }
+
+
+/* barista-v16-direction */
+function baristaV16Direction(text) {
+  const value = String(text ?? '').trim();
+  const rtl = /[\u0590-\u08FF]/.test(value);
+  return rtl ? { dir: 'rtl', textAlign: 'right' } : { dir: 'ltr', textAlign: 'left' };
+}

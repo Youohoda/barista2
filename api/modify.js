@@ -1,7 +1,9 @@
 import { json, body, providerChat } from './_lib.js';
+import { requireUser } from './auth.js';
 export default async function handler(req,res){
  if(req.method!=='POST')return json(res,405,{error:'Method not allowed'});
  try{
+  await requireUser(req);
   const b=await body(req); const name=String(b.name||'output.txt'); const content=String(b.content||''); const instruction=String(b.instruction||'عدّل الملف وحافظ على كل ما لا يحتاج تغييرًا.');
   if(!content)return json(res,400,{error:'الملف النصي فارغ أو لم يصل محتواه.'});
   if(content.length>1_200_000)return json(res,413,{error:'الملف كبير جدًا للمعالجة المباشرة. استخدم ملفًا أصغر في هذه النسخة.'});
