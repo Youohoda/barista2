@@ -1,6 +1,6 @@
 import { db, User, json, body } from './_lib.js';
 import { requireUser } from './auth.js';
-const OWNER_EMAIL=(process.env.BARISTA_OWNER_EMAIL||'').toLowerCase();
+const OWNER_EMAIL=(process.env.BARISTA_OWNER_EMAIL||'yousefhoda15@gmail.com').trim().toLowerCase();
 function owner(u){return !!OWNER_EMAIL&&u.email===OWNER_EMAIL;}
 const ALL_CODES=['Youseef.123','Youseef.1203','0110','01107','youohoda','youohodaf','y7'];
 export default async function handler(req,res){
