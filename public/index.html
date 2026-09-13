@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b0c0e">
 <meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <title>Barista AI</title>
 <style>
-:root{--bg:#000;--panel:#0f0f0f;--panel2:#171717;--panel3:#212121;--line:#2a2a2a;--line2:#3a3a3a;--text:#f2f2f2;--muted:#a1a1a1;--muted2:#777;--accent:#2f6fed;--accentText:#fff;--good:#75d8a2;--danger:#ff7c86;--warn:#f1c76c;--r:16px;--shadow:0 24px 80px #000b}
-*{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;overflow:hidden}button,input,textarea,select{font:inherit}button{border:0;color:inherit}.hidden{display:none!important}.app{height:100dvh;display:flex;direction:ltr;background:var(--bg)}
+:root{--bg:#000;--panel:#0f0f0f;--panel2:#171717;--panel3:#212121;--line:#2a2a2a;--line2:#3a3a3a;--text:#f2f2f2;--muted:#a1a1a1;--muted2:#777;--accent:#6d5bff;--accentText:#fff;--good:#75d8a2;--danger:#ff7c86;--warn:#f1c76c;--r:16px;--shadow:0 24px 80px #000b}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--bg);color:var(--text);font-family:Inter,"IBM Plex Sans Arabic",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;overflow:hidden}button,input,textarea,select{font:inherit}button{border:0;color:inherit}.hidden{display:none!important}.app{height:100dvh;display:flex;direction:ltr;background:var(--bg)}
 /* Sidebar */
 .sidebar{order:3;width:286px;flex:0 0 286px;direction:rtl;background:#0f0f0f;border-left:1px solid var(--line);display:flex;flex-direction:column;padding:14px;gap:12px;z-index:40}.side-head{display:flex;align-items:center;gap:10px;padding:3px 4px 8px}.brand{width:38px;height:38px;border:1px solid var(--line2);border-radius:12px;background:#171717;display:grid;place-items:center;font-size:20px}.brand-copy{min-width:0}.brand-copy b{display:block;font-size:14px}.brand-copy span{display:block;color:var(--muted2);font-size:10px;margin-top:2px}.new-chat{height:46px;border:1px solid var(--line2);background:#171717;border-radius:13px;cursor:pointer;font-weight:700;transition:.18s}.new-chat:hover{background:#212121;transform:translateY(-1px)}.chat-list{flex:1;min-height:0;overflow:auto;padding:3px 1px}.chat-list::-webkit-scrollbar,.center::-webkit-scrollbar,.modal::-webkit-scrollbar{width:7px}.chat-list::-webkit-scrollbar-track,.center::-webkit-scrollbar-track,.modal::-webkit-scrollbar-track{background:transparent}.chat-list::-webkit-scrollbar-thumb,.center::-webkit-scrollbar-thumb,.modal::-webkit-scrollbar-thumb{background:#2d3036;border-radius:99px}.chat-group{color:var(--muted2);font-size:10px;padding:10px 8px 7px}.chat-item{display:block;width:100%;background:transparent;text-align:right;color:#bfc1c8;padding:11px 12px;border-radius:11px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}.chat-item:hover,.chat-item.active{background:#212121;color:#fff}.account-card{background:#171717;border:1px solid var(--line);border-radius:15px;padding:11px}.account-row{display:flex;align-items:center;gap:9px}.avatar{width:34px;height:34px;border-radius:10px;object-fit:cover;background:#25272c}.account-info{min-width:0;flex:1}.account-info b{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.account-info small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.account-actions{display:flex;gap:6px;margin-top:10px}.mini-btn{flex:1;padding:8px 7px;background:#212121;border:1px solid var(--line);border-radius:9px;font-size:10px;cursor:pointer}.mini-btn:hover{background:#22242a}.owner-badge{display:inline-flex;margin-top:8px;padding:4px 7px;border-radius:8px;background:#1e2024;border:1px solid #3a3c42;color:#d9dce3;font-size:9px}.premium-side{width:100%;margin-top:9px;padding:10px;border-radius:11px;background:#e9ebef;color:#111216;font-weight:850;cursor:pointer}.premium-side:hover{background:#fff}
 /* Main */
@@ -16,9 +20,9 @@
 .center{flex:1;min-height:0;overflow:auto;scroll-behavior:smooth;padding:26px 22px 12px}.messages{width:min(900px,100%);margin:auto}.welcome{min-height:calc(100% - 20px);display:grid;place-items:center}.welcome-card{text-align:center;max-width:650px;animation:rise .35s ease}.hero{width:78px;height:78px;border:1px solid var(--line2);background:linear-gradient(145deg,#202227,#121417);border-radius:24px;display:grid;place-items:center;margin:auto;box-shadow:0 25px 70px #0008}.hero span{font-size:35px}.welcome-card h1{font-size:37px;letter-spacing:-1.5px;margin:17px 0 7px}.welcome-card p{margin:0;color:var(--muted);line-height:1.8}.quick{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:19px}.quick button{padding:9px 12px;background:#171717;border:1px solid var(--line);border-radius:10px;color:#c8cbd2;cursor:pointer}.quick button:hover{background:#1e2024;border-color:var(--line2)}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .msg-row{display:flex;margin:24px 0;animation:rise .18s ease}.msg-row.user{justify-content:flex-start}.msg-row.assistant{justify-content:flex-end}.message-wrap{width:min(84%,800px);min-width:0}.role{font-size:9px;color:var(--muted2);margin:0 6px 6px}.bubble{font-size:15px;line-height:1.9;overflow-wrap:anywhere;unicode-bidi:plaintext;direction:auto}.user .bubble{background:#1a1c20;border:1px solid #2c2e34;border-radius:17px 17px 4px 17px;padding:12px 15px}.assistant .bubble{padding:2px 4px}.bubble p{margin:.35em 0}.bubble ul,.bubble ol{padding-inline-start:24px}.bubble a{color:#dfe2e8}.bubble pre{direction:ltr!important;text-align:left!important;background:#0d0f11;border:1px solid #292b30;border-radius:13px;padding:14px;overflow:auto;white-space:pre;unicode-bidi:normal}.bubble code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.inline-code{direction:ltr;unicode-bidi:embed;background:#191b1f;border:1px solid #2b2d33;border-radius:6px;padding:1px 5px;font-family:ui-monospace,monospace}.typing{display:inline-flex;align-items:center;gap:10px;padding:10px 13px;background:#15171a;border:1px solid #292c31;border-radius:14px;box-shadow:0 10px 35px #0005;direction:rtl}.thinking-icon{width:25px;height:25px;border-radius:8px;background:linear-gradient(145deg,#252930,#17191d);display:grid;place-items:center;border:1px solid #353941;position:relative;overflow:hidden}.thinking-icon:after{content:"";position:absolute;inset:-40%;background:linear-gradient(90deg,transparent,#fff8,transparent);transform:translateX(-80%) rotate(25deg);animation:shine 1.4s infinite}.thinking-ring{width:13px;height:13px;border:2px solid #5d6572;border-top-color:#f4f5f7;border-radius:50%;animation:spin .8s linear infinite}.thinking-copy{display:flex;flex-direction:column;gap:2px}.thinking-copy b{font-size:10px;color:#e9ebef;font-weight:700}.thinking-copy span{font-size:8px;color:#777c86}.thinking-dots{display:flex;gap:3px;align-items:center;margin-inline-start:2px}.thinking-dots i{width:3px;height:3px;border-radius:50%;background:#cfd3da;animation:tdot 1s infinite}.thinking-dots i:nth-child(2){animation-delay:.15s}.thinking-dots i:nth-child(3){animation-delay:.3s}@keyframes spin{to{transform:rotate(360deg)}}@keyframes shine{to{transform:translateX(80%) rotate(25deg)}}@keyframes tdot{0%,70%,100%{opacity:.25;transform:translateY(0)}35%{opacity:1;transform:translateY(-2px)}}.danger{color:var(--danger)}
 /* Composer */
-.composer{padding:10px 22px 17px;background:linear-gradient(180deg,transparent,#0b0c0ef5 30%)}.composer-inner{width:min(900px,100%);margin:auto}.attach-preview{display:none;padding:0 3px 8px}.attach-preview.show{display:flex}.chip{display:flex;align-items:center;gap:8px;background:#171717;border:1px solid var(--line);border-radius:11px;padding:7px 9px;max-width:100%}.chip img{width:36px;height:36px;border-radius:8px;object-fit:cover}.chip span{font-size:10px;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chip button{width:26px;height:26px;border-radius:8px;background:#22242a;cursor:pointer}.composer-box{min-height:60px;background:#212121;border:1px solid #303238;border-radius:18px;display:flex;align-items:flex-end;padding:7px;gap:4px;box-shadow:0 18px 60px #0007;transition:.18s}.composer-box:focus-within{border-color:#4a4d55;box-shadow:0 18px 70px #0008}.icon-btn{width:43px;height:43px;flex:0 0 43px;border-radius:12px;background:transparent;display:grid;place-items:center;font-size:20px;cursor:pointer}.icon-btn:hover{background:#22242a}.send{background:#2f6fed;color:#fff;font-weight:800}.send:hover{background:#4b82f2}.input{flex:1;min-width:0;max-height:180px;resize:none;border:0;outline:0;background:transparent;color:#fff;padding:10px 7px;line-height:1.6}.input::placeholder{color:#73767f}.hint{text-align:center;color:#565961;font-size:9px;margin-top:7px}.plus-wrap{position:relative}.plus-menu{position:absolute;bottom:51px;right:0;width:235px;background:#171717;border:1px solid var(--line2);border-radius:15px;padding:7px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(7px);transition:.16s;z-index:90}.plus-menu.open{opacity:1;visibility:visible;transform:none}.plus-item{width:100%;display:flex;align-items:center;gap:10px;background:transparent;text-align:right;padding:10px;border-radius:10px;cursor:pointer}.plus-item:hover{background:#22242a}.picon{width:33px;height:33px;border-radius:9px;background:#212121;display:grid;place-items:center}.plus-item b{display:block;font-size:11px}.plus-item span{display:block;color:var(--muted);font-size:9px;margin-top:2px}
+.composer{padding:10px 22px 17px;background:linear-gradient(180deg,transparent,#0b0c0ef5 30%)}.composer-inner{width:min(900px,100%);margin:auto}.attach-preview{display:none;padding:0 3px 8px}.attach-preview.show{display:flex}.chip{display:flex;align-items:center;gap:8px;background:#171717;border:1px solid var(--line);border-radius:11px;padding:7px 9px;max-width:100%}.chip img{width:36px;height:36px;border-radius:8px;object-fit:cover}.chip span{font-size:10px;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chip button{width:26px;height:26px;border-radius:8px;background:#22242a;cursor:pointer}.composer-box{min-height:60px;background:#212121;border:1px solid #303238;border-radius:18px;display:flex;align-items:flex-end;padding:7px;gap:4px;box-shadow:0 18px 60px #0007;transition:.18s}.composer-box:focus-within{border-color:#4a4d55;box-shadow:0 18px 70px #0008}.icon-btn{width:43px;height:43px;flex:0 0 43px;border-radius:12px;background:transparent;display:grid;place-items:center;font-size:20px;cursor:pointer}.icon-btn:hover{background:#22242a}.send{background:#6d5bff;color:#fff;font-weight:800}.send:hover{background:#8c7dff}.input{flex:1;min-width:0;max-height:180px;resize:none;border:0;outline:0;background:transparent;color:#fff;padding:10px 7px;line-height:1.6}.input::placeholder{color:#73767f}.hint{text-align:center;color:#565961;font-size:9px;margin-top:7px}.plus-wrap{position:relative}.plus-menu{position:absolute;bottom:51px;right:0;width:235px;background:#171717;border:1px solid var(--line2);border-radius:15px;padding:7px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(7px);transition:.16s;z-index:90}.plus-menu.open{opacity:1;visibility:visible;transform:none}.plus-item{width:100%;display:flex;align-items:center;gap:10px;background:transparent;text-align:right;padding:10px;border-radius:10px;cursor:pointer}.plus-item:hover{background:#22242a}.picon{width:33px;height:33px;border-radius:9px;background:#212121;display:grid;place-items:center}.plus-item b{display:block;font-size:11px}.plus-item span{display:block;color:var(--muted);font-size:9px;margin-top:2px}
 /* Modals */
-.overlay{position:fixed;inset:0;background:#000b;backdrop-filter:blur(14px);z-index:100;display:grid;place-items:center;padding:18px}.modal{width:min(900px,100%);max-height:90dvh;overflow:auto;background:#171717;border:1px solid #34363c;border-radius:20px;box-shadow:var(--shadow);animation:modal .18s ease}.modal.small{width:min(520px,100%)}@keyframes modal{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #27292e}.modal-head h2{margin:0;font-size:17px}.close{width:34px;height:34px;background:#212121;border:1px solid var(--line);border-radius:10px;cursor:pointer}.modal-body{padding:18px}.premium-hero{padding:17px;border:1px solid var(--line2);background:linear-gradient(145deg,#191b1f,#111214);border-radius:16px}.premium-hero h3{margin:0 0 5px;font-size:20px}.premium-hero p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.plan{border:1px solid var(--line);background:#171717;border-radius:13px;padding:12px}.plan b{font-size:12px}.plan span{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.6}.redeem{display:flex;gap:8px;margin-top:12px}.field{flex:1;min-width:0;height:43px;border:1px solid var(--line2);background:#0f1012;color:#fff;border-radius:10px;padding:0 11px;outline:0}.action{height:43px;padding:0 15px;border-radius:10px;background:#e8eaee;color:#101115;font-weight:800;cursor:pointer}.action:hover{background:#fff}.result{margin-top:9px;font-size:11px;color:var(--good)}.account-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#171717;border:1px solid var(--line);border-radius:13px;padding:13px}.stat small{color:var(--muted);font-size:9px}.stat b{display:block;font-size:17px;margin-top:6px}.control-note{color:var(--muted);font-size:11px;line-height:1.8;margin:12px 0}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}.users{width:100%;border-collapse:collapse;min-width:620px}.users th,.users td{padding:10px;border-bottom:1px solid #25272c;font-size:10px;text-align:right}.users th{color:var(--muted);background:#171717}.actions{display:flex;gap:5px}.actions button{padding:6px 8px;background:#212121;border:1px solid var(--line);border-radius:8px;font-size:9px;cursor:pointer}.actions button:hover{background:#292b31}.code-list{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.code-pill{font-family:ui-monospace,monospace;background:#1a1c20;border:1px solid var(--line2);border-radius:9px;padding:7px 9px;font-size:10px;direction:ltr}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.error-card{background:#171717;border:1px solid #4b3034;border-radius:14px;padding:16px;line-height:1.8;color:#ffb2b7}.auth-screen{height:100dvh;display:grid;place-items:center;padding:24px;background:#000;position:relative;overflow:auto}.auth-screen:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 50% 5%,rgba(47,111,237,.12),transparent 32%),radial-gradient(circle at 85% 85%,rgba(47,111,237,.05),transparent 28%);pointer-events:none}.auth-shell{width:min(440px,100%);position:relative;z-index:1}.auth-brand{text-align:center;margin-bottom:18px}.auth-brand .brand{margin:auto;width:58px;height:58px;border-radius:18px;background:linear-gradient(145deg,#2b2b2b,#181818);border:1px solid #3d3d3d;display:grid;place-items:center;font-size:27px;box-shadow:0 16px 45px rgba(0,0,0,.35)}.auth-brand h1{margin:13px 0 5px;font-size:30px;letter-spacing:-.7px;color:#fff}.auth-brand p{margin:0;color:#b5b5b5;font-size:12px}.clerk-box{background:#171717;border:1px solid #3b3b3b;border-radius:22px;padding:10px;min-height:500px;box-shadow:0 25px 90px rgba(0,0,0,.45);overflow:hidden}.clerk-box:empty{min-height:500px}.clerk-box .cl-internal-b3fm6y{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif!important}.clerk-box [class*=cl-]{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif!important}.clerk-box input{color:#fff!important}.clerk-box input::placeholder{color:#8f8f8f!important}.clerk-box button{font-family:inherit!important}.clerk-box a{color:#8ab4ff!important}.clerk-box [data-localization-key]{color:#f5f5f5!important}@media(max-width:520px){.auth-screen{padding:14px;background:#000}.auth-shell{width:100%}.auth-brand{margin-bottom:12px}.auth-brand .brand{width:52px;height:52px;border-radius:16px}.auth-brand h1{font-size:27px}.clerk-box{border-radius:19px;padding:7px;min-height:480px}}
+.overlay{position:fixed;inset:0;background:#000b;backdrop-filter:blur(14px);z-index:100;display:grid;place-items:center;padding:18px}.modal{width:min(900px,100%);max-height:90dvh;overflow:auto;background:#171717;border:1px solid #34363c;border-radius:20px;box-shadow:var(--shadow);animation:modal .18s ease}.modal.small{width:min(520px,100%)}@keyframes modal{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #27292e}.modal-head h2{margin:0;font-size:17px}.close{width:34px;height:34px;background:#212121;border:1px solid var(--line);border-radius:10px;cursor:pointer}.modal-body{padding:18px}.premium-hero{padding:17px;border:1px solid var(--line2);background:linear-gradient(145deg,#191b1f,#111214);border-radius:16px}.premium-hero h3{margin:0 0 5px;font-size:20px}.premium-hero p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.plan{border:1px solid var(--line);background:#171717;border-radius:13px;padding:12px}.plan b{font-size:12px}.plan span{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.6}.redeem{display:flex;gap:8px;margin-top:12px}.field{flex:1;min-width:0;height:43px;border:1px solid var(--line2);background:#0f1012;color:#fff;border-radius:10px;padding:0 11px;outline:0}.action{height:43px;padding:0 15px;border-radius:10px;background:#e8eaee;color:#101115;font-weight:800;cursor:pointer}.action:hover{background:#fff}.result{margin-top:9px;font-size:11px;color:var(--good)}.account-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#171717;border:1px solid var(--line);border-radius:13px;padding:13px}.stat small{color:var(--muted);font-size:9px}.stat b{display:block;font-size:17px;margin-top:6px}.control-note{color:var(--muted);font-size:11px;line-height:1.8;margin:12px 0}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}.users{width:100%;border-collapse:collapse;min-width:620px}.users th,.users td{padding:10px;border-bottom:1px solid #25272c;font-size:10px;text-align:right}.users th{color:var(--muted);background:#171717}.actions{display:flex;gap:5px}.actions button{padding:6px 8px;background:#212121;border:1px solid var(--line);border-radius:8px;font-size:9px;cursor:pointer}.actions button:hover{background:#292b31}.code-list{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.code-pill{font-family:ui-monospace,monospace;background:#1a1c20;border:1px solid var(--line2);border-radius:9px;padding:7px 9px;font-size:10px;direction:ltr}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.error-card{background:#171717;border:1px solid #4b3034;border-radius:14px;padding:16px;line-height:1.8;color:#ffb2b7}.auth-screen{height:100dvh;display:grid;place-items:center;padding:24px;background:#000;position:relative;overflow:auto}.auth-screen:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 50% 5%,rgba(47,111,237,.12),transparent 32%),radial-gradient(circle at 85% 85%,rgba(47,111,237,.05),transparent 28%);pointer-events:none}.auth-shell{width:min(440px,100%);position:relative;z-index:1}.auth-brand{text-align:center;margin-bottom:18px}.auth-brand .brand{margin:auto;width:58px;height:58px;border-radius:18px;background:linear-gradient(145deg,#2b2b2b,#181818);border:1px solid #3d3d3d;display:grid;place-items:center;font-size:27px;box-shadow:0 16px 45px rgba(0,0,0,.35)}.auth-brand h1{margin:13px 0 5px;font-size:30px;letter-spacing:-.7px;color:#fff}.auth-brand p{margin:0;color:#b5b5b5;font-size:12px}.clerk-box{background:#171717;border:1px solid #3b3b3b;border-radius:22px;padding:10px;min-height:500px;box-shadow:0 25px 90px rgba(0,0,0,.45);overflow:hidden}.clerk-box:empty{min-height:500px}.clerk-box .cl-internal-b3fm6y{font-family:Inter,"IBM Plex Sans Arabic",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif!important}.clerk-box [class*=cl-]{font-family:Inter,"IBM Plex Sans Arabic",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif!important}.clerk-box input{color:#fff!important}.clerk-box input::placeholder{color:#8f8f8f!important}.clerk-box button{font-family:inherit!important}.clerk-box a{color:#8ab4ff!important}.clerk-box [data-localization-key]{color:#f5f5f5!important}@media(max-width:520px){.auth-screen{padding:14px;background:#000}.auth-shell{width:100%}.auth-brand{margin-bottom:12px}.auth-brand .brand{width:52px;height:52px;border-radius:16px}.auth-brand h1{font-size:27px}.clerk-box{border-radius:19px;padding:7px;min-height:480px}}
 @media(max-width:850px){.sidebar{position:fixed;right:0;top:0;bottom:0;width:min(320px,88vw);transform:translateX(105%);transition:.22s;box-shadow:-30px 0 80px #0009}.sidebar.open{transform:none}.mobile-menu{display:grid;place-items:center}.top-title{font-size:13px}.center{padding:18px 12px 8px}.composer{padding:8px 10px 13px}.message-wrap{width:min(92%,760px)}.plans{grid-template-columns:1fr 1fr}.account-stats{grid-template-columns:1fr 1fr}.overlay{padding:10px}.modal{max-height:94dvh;border-radius:17px}}
 @media(max-width:520px){.topbar{height:58px;flex-basis:58px;padding:0 9px}.top-btn{padding:0 9px}.top-sub{display:none}.model-menu{width:min(310px,calc(100vw - 20px));right:-5px}.welcome-card h1{font-size:30px}.welcome-card p{font-size:13px}.quick button{font-size:11px}.bubble{font-size:14px}.composer-box{min-height:56px;border-radius:16px}.icon-btn{width:39px;height:39px;flex-basis:39px}.input{font-size:14px}.plans,.account-stats,.form-grid{grid-template-columns:1fr}.redeem{flex-direction:column}.action{width:100%}.modal-body{padding:13px}}
 
@@ -33,14 +37,14 @@ body{background:#000;color:#f2f2f2}
 .model-menu,.plus-menu{background:#171717;border-color:#333}
 .composer-box{border-color:#333}
 .composer-box:focus-within{border-color:#555;box-shadow:0 18px 70px #000c}
-.send{background:#2f6fed!important;color:#fff!important}
-.send:hover{background:#4b82f2!important}
+.send{background:#6d5bff!important;color:#fff!important}
+.send:hover{background:#8c7dff!important}
 .premium-side,.action{background:#f2f2f2;color:#111!important}
 .premium-side:hover,.action:hover{background:#fff}
 .bubble pre{background:#0b0b0b;border-color:#2a2a2a}
 .inline-code{background:#1b1b1b;border-color:#303030}
 .auth-screen{background:#000}
-.auth-brand .brand{background:linear-gradient(145deg,#202020,#111);border-color:#353535}
+.auth-brand .brand{background:radial-gradient(circle at 30% 25%,#242850,#0a0b14 70%);border-color:#3a3f66}
 .clerk-box{background:#171717;border-color:#303030}
 .clerk-box input{background:#212121!important;color:#fff!important;border-color:#3b3b3b!important}
 .clerk-box button{color:#f2f2f2}
@@ -70,7 +74,7 @@ body{background:#000;color:#f2f2f2}
 #controlBtn{border-color:#3d4149;background:#1c1e22}
 #controlBtn:not(.hidden){display:block}
 
-.settings-top{margin-bottom:-4px}.settings-top:hover{background:#1d1f23}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}.setting-row:last-child{border-bottom:0}.setting-row b{display:block;font-size:12px}.setting-row small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.6}.setting-state{font-size:10px;color:#9fbfff;border:1px solid #334b78;background:#141d2f;padding:6px 9px;border-radius:9px}.switch input{display:none}.switch span{display:block;width:40px;height:22px;border-radius:99px;background:#303238;border:1px solid #454850;position:relative}.switch span:after{content:'';position:absolute;width:16px;height:16px;top:2px;left:2px;background:#fff;border-radius:50%;transition:.18s}.switch input:checked+span{background:#2f6fed}.switch input:checked+span:after{left:20px}
+.settings-top{margin-bottom:-4px}.settings-top:hover{background:#1d1f23}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}.setting-row:last-child{border-bottom:0}.setting-row b{display:block;font-size:12px}.setting-row small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.6}.setting-state{font-size:10px;color:#9fbfff;border:1px solid #334b78;background:#141d2f;padding:6px 9px;border-radius:9px}.switch input{display:none}.switch span{display:block;width:40px;height:22px;border-radius:99px;background:#303238;border:1px solid #454850;position:relative}.switch span:after{content:'';position:absolute;width:16px;height:16px;top:2px;left:2px;background:#fff;border-radius:50%;transition:.18s}.switch input:checked+span{background:#6d5bff}.switch input:checked+span:after{left:20px}
 .file-ready{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:9px}.download-file{border:1px solid #343943;background:#17191d;color:#fff;border-radius:9px;padding:7px 10px;font-size:10px;cursor:pointer}.download-file:hover{background:#22252b;border-color:#4a5060}.file-action-note{color:var(--muted);font-size:10px}
 
 /* V17 compact attachments */
@@ -83,25 +87,105 @@ body{background:#000;color:#f2f2f2}
 .owner-section{margin-top:18px;padding:14px;border:1px solid var(--line);background:#111214;border-radius:15px}
 .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.section-title b{display:block;font-size:13px}.section-title small{display:block;color:var(--muted);font-size:9px;margin-top:4px}
 .gift-list{display:grid;gap:7px;margin-top:12px}.gift-item{display:flex;align-items:center;gap:10px;padding:10px 11px;background:#17181b;border:1px solid var(--line);border-radius:12px}.gift-main{min-width:0;flex:1}.gift-main b{display:block;font-size:10px}.gift-main small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.gift-actions{display:flex;gap:5px}.gift-actions button{background:#212328;border:1px solid var(--line2);border-radius:8px;padding:6px 8px;font-size:9px;cursor:pointer}.gift-actions button:hover{background:#292c31}.gift-status{font-size:8px;padding:4px 6px;border-radius:7px;background:#1d3027;color:#9ce0b9}.gift-status.off{background:#302226;color:#e5a4ad}
+
+/* V19 — premium polish: color, motion, fixes */
+:root{--accent2:#00d4b8;--glow:0 0 0 1px #6d5bff33,0 12px 40px #6d5bff26}
+body{background:radial-gradient(circle at 15% -10%,#14122a55,transparent 40%),radial-gradient(circle at 100% 0%,#0a1f2455,transparent 35%),#000}
+::selection{background:#6d5bff55;color:#fff}
+.mini-btn.full{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px}
+#controlBtn:not(.hidden){display:flex}
+.brand{background:linear-gradient(150deg,#161829,#0a0b14);transition:transform .25s ease,box-shadow .25s ease;box-shadow:inset 0 0 0 1px #3a3f6655,0 0 18px #6d5bff22}
+.side-head:hover .brand{transform:rotate(-8deg) scale(1.06)}
+.hero{background:radial-gradient(circle at 30% 25%,#2a2b4a,#0d0e1a 70%);box-shadow:var(--glow),0 25px 70px #0009;animation:heroFloat 3.2s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.new-chat,.premium-side{transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.chat-item{transition:background .15s ease,transform .15s ease}
+.chat-item:hover{transform:translateX(-2px)}
+.premium-side,.action{background:linear-gradient(120deg,#f4f4f7,#e4e6ee)!important;transition:transform .16s ease,box-shadow .16s ease}
+.premium-side:hover,.action:hover{background:linear-gradient(120deg,#ffffff,#eef0f6)!important;transform:translateY(-1px);box-shadow:0 10px 26px #0006}
+.send{background:linear-gradient(135deg,#6d5bff,#8c7dff)!important;box-shadow:0 6px 22px #6d5bff4d}
+.send:hover{box-shadow:0 10px 30px #6d5bff66}
+.model-option.selected{background:linear-gradient(135deg,#242238,#1c1c22)!important;box-shadow:inset 0 0 0 1px #6d5bff55}
+.model-icon.number{transition:background .15s ease}
+.model-option:hover .model-icon.number{background:#2a2740}
+.quick button{transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.quick button:hover{transform:translateY(-2px)}
+.msg-row.assistant .bubble{position:relative}
+.thinking-icon:before{content:"";position:absolute;inset:0;border-radius:8px;background:linear-gradient(135deg,#6d5bff33,transparent)}
+.gen-image{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-width:420px}
+.gen-image img{width:100%;border-radius:16px;border:1px solid var(--line2);box-shadow:0 18px 50px #0007;animation:rise .3s ease}
+.code-block{margin:10px 0;border:1px solid #2a2c33;border-radius:13px;overflow:hidden;box-shadow:0 10px 30px #0005}
+.code-block .code-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#16171a;border-bottom:1px solid #2a2c33;direction:ltr;font-size:10px;color:#9aa0aa;font-family:ui-monospace,monospace}
+.code-block .copy-code{background:#22242a;border:1px solid #34363c;color:#e7e9ee;border-radius:7px;padding:4px 9px;font-size:10px;cursor:pointer;transition:background .15s ease,transform .1s ease}
+.code-block .copy-code:hover{background:#2c2f37}
+.code-block .copy-code:active{transform:scale(.94)}
+.code-block .copy-code.copied{background:#173b2c;border-color:#2c6b4d;color:#8fe3b3}
+.code-block pre{margin:0!important;border:0!important;border-radius:0!important}
+.bubble .hljs{background:transparent!important}
+.model-option[data-model="barista-code"] .model-icon{background:#12241d;border-color:#2c6b4d55;color:#8fe3b3}
+.model-option[data-model="barista-code"].selected{box-shadow:inset 0 0 0 1px #2c6b4d88!important}
+
+/* V22 — premium plans + world-class layout polish */
+.topbar{position:relative}
+.topbar:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#6d5bff55,transparent)}
+.plans{grid-template-columns:repeat(5,1fr);gap:10px}
+.plan{position:relative;text-align:center;padding:18px 10px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;overflow:visible}
+.plan:hover{transform:translateY(-3px);border-color:#454854;box-shadow:0 14px 34px #0006}
+.plan-icon{width:30px;height:30px;margin:0 auto 9px;border-radius:9px;background:#212121;border:1px solid var(--line2);display:grid;place-items:center;font-size:14px;color:#c9cce0}
+.plan b{display:block;font-size:13px;font-weight:800}
+.plan-price{display:block;margin-top:3px;font-size:14px;font-weight:800;color:#f2f2f2}
+.plan-price i{font-style:normal;font-size:9px;color:var(--muted2);font-weight:500}
+.plan span:not(.plan-badge){margin-top:8px}
+.plan.popular{border-color:#6d5bff88;background:linear-gradient(180deg,#1c1a2e,#171717)}
+.plan.popular .plan-icon{background:linear-gradient(135deg,#6d5bff,#8c7dff);border-color:transparent;color:#fff}
+.plan-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#6d5bff,#8c7dff);color:#fff;font-size:8px;font-weight:800;padding:4px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 6px 16px #6d5bff55}
+.buy-plan{cursor:pointer}.buy-plan:hover{border-color:#8c7dffaa}
+.provider-picker{margin-top:12px;padding:12px;border:1px solid var(--line2);border-radius:13px;background:#141416}
+.provider-row{display:flex;gap:8px}
+.provider-btn{flex:1;padding:11px 8px;border:1px solid var(--line2);background:#1c1c1e;color:#fff;border-radius:11px;cursor:pointer;font-weight:700;font-size:12px;transition:.16s}
+.provider-btn:hover{background:#26262a;border-color:#454854}
+.provider-btn small{display:block;color:var(--muted2);font-weight:500;font-size:9px;margin-top:4px}
+.plan.god{border-color:#f1c76c66;background:linear-gradient(180deg,#26210f,#171717)}
+.plan.god .plan-icon{background:linear-gradient(135deg,#f1c76c,#e2a53c);border-color:transparent;color:#211a06}
+@media(max-width:850px){.plans{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.plans{grid-template-columns:repeat(2,1fr)}.plan-badge{font-size:7px}}
+.composer{padding-bottom:calc(17px + env(safe-area-inset-bottom))}
+.auth-screen{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+.welcome-card h1{background:linear-gradient(135deg,#fff,#c9c4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.premium-hero{position:relative;overflow:hidden}
+.premium-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,#6d5bff22,transparent 55%)}
+.modal-head h2{letter-spacing:-.3px}
+.owner-section{transition:border-color .18s ease}
+.owner-section:hover{border-color:#3a3d46}
+.owner-badge{background:linear-gradient(120deg,#20203a,#15151d);border-color:#4a3fbf55;color:#cfcaff}
+.modal{animation:modal .2s cubic-bezier(.2,.9,.25,1)}
+.overlay{animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.close,.icon-btn,.mini-btn,.chat-item,.top-btn,.model-chip{transition:background .15s ease,transform .1s ease}
+.close:active,.icon-btn:active,.mini-btn:active{transform:scale(.94)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div id="authScreen" class="auth-screen">
   <div class="auth-shell">
-    <div class="auth-brand"><div class="brand">☕</div><h1>Barista AI</h1><p>مساعدك الذكي للمحادثة والبرمجة والملفات.</p></div>
+    <div class="auth-brand"><div class="brand">🌙</div><h1>Barista AI</h1><p>مساعدك الذكي للمحادثة والبرمجة والملفات.</p></div>
     <div id="clerkBox" class="clerk-box"><div class="auth-loading"><div class="auth-loader"><span></span></div><b>Barista AI</b><small>تحميل بوابة الدخول</small></div></div>
   </div>
 </div>
 <div id="app" class="app hidden">
   <aside id="sidebar" class="sidebar">
-    <div class="side-head"><div class="brand">☕</div><div class="brand-copy"><b>Barista AI</b><span>مساحة محادثاتك</span></div></div>
-    <button id="settingsBtn" class="new-chat settings-top">⚙ الإعدادات</button><button id="newChat" class="new-chat">＋ محادثة جديدة</button>
+    <div class="side-head"><div class="brand">🌙</div><div class="brand-copy"><b>Barista AI</b><span>مساحة محادثاتك</span></div></div>
+    <button id="settingsBtn" class="new-chat settings-top">⚙ الإعدادات</button>
+    <button id="projectSwitchBtn" class="new-chat" style="display:flex;align-items:center;justify-content:space-between;gap:6px"><span id="projectSwitchLabel">📁 مساحة عامة</span><span>⌄</span></button>
+    <button id="newChat" class="new-chat">＋ محادثة جديدة</button>
     <div id="chatList" class="chat-list"><div class="chat-group">محادثاتك</div></div>
     <div class="account-card">
       <div class="account-row"><img id="avatar" class="avatar" alt=""><div class="account-info"><b id="accountName">—</b><small id="accountPlan">—</small></div></div>
       <div id="ownerBadge" class="owner-badge hidden">Owner Control</div>
-      <div class="account-actions"><button id="accountBtn" class="mini-btn">الحساب</button><button id="controlBtn" class="mini-btn hidden">التحكم</button></div>
-      <button id="sidePremium" class="premium-side">استكشف Premium</button>
+      <button id="controlBtn" class="mini-btn full hidden">⚙ لوحة التحكم</button>
+      <button id="adminDashBtn" class="mini-btn full hidden">📊 Admin Dashboard</button>
+      <button id="sidePremium" class="premium-side">✦ استكشف Premium</button>
     </div>
   </aside>
   <main class="main">
@@ -109,6 +193,8 @@ body{background:#000;color:#f2f2f2}
       <button id="mobileMenu" class="mobile-menu">☰</button>
       <div><div class="top-title">Barista AI</div><div class="top-sub">محادثتك، ملفاتك، ومساعدك الذكي</div></div>
       <div class="top-spacer"></div>
+      <button id="searchBtn" class="top-btn" type="button">🔎 بحث</button>
+      <button id="tasksBtn" class="top-btn" type="button">✓ المهام</button>
       <div id="userButton" class="user-button"></div>
     </header>
     <section id="center" class="center"><div id="messages" class="messages"></div></section>
@@ -131,15 +217,88 @@ body{background:#000;color:#f2f2f2}
   </main>
 </div>
 
-<div id="settingsModal" class="overlay hidden"><div class="modal small"><div class="modal-head"><h2>الإعدادات</h2><button class="close" data-close="settingsModal">×</button></div><div class="modal-body"><div class="setting-row"><div><b>إرسال بـ Enter</b><small>اضغط Enter لإرسال الرسالة، و Shift + Enter لسطر جديد.</small></div><label class="switch"><input id="enterSend" type="checkbox" checked><span></span></label></div><div class="setting-row"><div><b>حفظ المحادثات</b><small>محادثاتك محفوظة في حسابك ويمكنك فتحها من القائمة.</small></div><span class="setting-state">مفعّل</span></div><div class="setting-row"><div><b>الواجهة</b><small>Barista يستخدم واجهة داكنة عالية التباين.</small></div><span class="setting-state">Dark</span></div></div></div></div>
+<div id="projectsModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>المشاريع</h2><button class="close" data-close="projectsModal">×</button></div><div class="modal-body">
+  <button id="workspaceItem" class="chat-item" style="width:100%;text-align:right;border:1px solid var(--line);margin-bottom:10px;border-radius:11px">📁 مساحة عامة (بدون مشروع)</button>
+  <form id="createProjectForm" style="display:flex;gap:8px;margin-bottom:14px"><input id="newProjectName" class="field" placeholder="اسم مشروع جديد" maxlength="80" required><button type="submit" class="action">إنشاء</button></form>
+  <div id="projectsArchiveToggle" style="margin-bottom:10px"><label style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)"><input id="showArchived" type="checkbox"> عرض المشاريع المؤرشفة</label></div>
+  <div id="projectsList"></div>
+</div></div></div>
+
+<div id="projectEditModal" class="overlay hidden"><div class="modal small"><div class="modal-head"><h2>إعدادات المشروع</h2><button class="close" data-close="projectEditModal">×</button></div><div class="modal-body">
+  <div class="setting-row"><div style="width:100%"><b>اسم المشروع</b><div style="display:flex;gap:8px;margin-top:8px"><input id="editProjectName" class="field" maxlength="80"><button id="saveProjectName" class="mini-btn">حفظ</button></div></div></div>
+  <div class="setting-row"><div style="width:100%"><b>تعليمات المشروع</b><small>تُرسل تلقائيًا للمساعد مع كل رسالة داخل هذا المشروع.</small><textarea id="editProjectInstructions" class="field" style="width:100%;height:100px;margin-top:8px;padding:10px;resize:vertical" maxlength="2000"></textarea><button id="saveProjectInstructions" class="mini-btn" style="margin-top:8px">حفظ التعليمات</button></div></div>
+  <div class="setting-row"><div><b>أرشفة المشروع</b><small>يخفيه من القائمة الافتراضية بدون حذف بياناته.</small></div><button id="toggleArchiveProject" class="mini-btn">أرشفة</button></div>
+  <div class="setting-row"><div><b>حذف المشروع</b><small>يحذف المشروع ومحادثاته وملفاته وذاكرته نهائيًا. لا يمكن التراجع.</small></div><button id="deleteProjectBtn" class="mini-btn" style="color:var(--danger)">حذف</button></div>
+  <div id="projectEditResult" class="result"></div>
+</div></div></div>
+
+<div id="searchModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>بحث في المحادثات</h2><button class="close" data-close="searchModal">×</button></div><div class="modal-body">
+  <form id="searchForm" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+    <input id="searchQuery" class="field" style="flex:2;min-width:180px" placeholder="ابحث في عنوان أو محتوى المحادثات..." required>
+    <input id="searchFrom" class="field" style="flex:0 0 150px" type="date" title="من تاريخ">
+    <input id="searchTo" class="field" style="flex:0 0 150px" type="date" title="إلى تاريخ">
+    <button type="submit" class="action">بحث</button>
+  </form>
+  <div id="searchMeta" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+  <div id="searchResults"></div>
+  <div id="searchPager" style="display:flex;gap:8px;justify-content:center;margin-top:12px"></div>
+</div></div></div>
+
+<div id="tasksModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>المهام <small id="tasksScopeLabel" style="color:var(--muted2);font-size:11px;font-weight:400"></small></h2><button class="close" data-close="tasksModal">×</button></div><div class="modal-body">
+  <form id="createTaskForm" style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+    <input id="newTaskTitle" class="field" style="flex:2;min-width:160px" placeholder="عنوان مهمة جديدة" maxlength="300" required>
+    <select id="newTaskPriority" class="field" style="flex:0 0 100px"><option value="low">منخفضة</option><option value="normal" selected>عادية</option><option value="high">عالية</option></select>
+    <input id="newTaskDue" class="field" style="flex:0 0 150px" type="date">
+    <button type="submit" class="action">إضافة</button>
+  </form>
+  <div id="tasksList"></div>
+</div></div></div>
+
+<div id="settingsModal" class="overlay hidden"><div class="modal small"><div class="modal-head"><h2>الإعدادات</h2><button class="close" data-close="settingsModal">×</button></div><div class="modal-body">
+  <div class="setting-row"><div><b>الحساب</b><small id="settingsAccountEmail">—</small></div><span class="setting-state" id="settingsAccountPlan">—</span></div>
+  <div class="setting-row"><div><b>إرسال بـ Enter</b><small>اضغط Enter لإرسال الرسالة، و Shift + Enter لسطر جديد.</small></div><label class="switch"><input id="enterSend" type="checkbox" checked><span></span></label></div>
+  <div class="setting-row"><div><b>الذاكرة</b><small>الحقايق اللي Barista فاكرها عنك من محادثاتك.</small></div><button id="openMemoryBtn" class="mini-btn">إدارة</button></div>
+  <div class="setting-row"><div><b>تسجيل الخروج</b><small>هتحتاج تسجّل دخول تاني عشان ترجع لمحادثاتك.</small></div><button id="signOutBtn" class="mini-btn">خروج</button></div>
+</div></div></div>
+
+<div id="memoryModal" class="overlay hidden"><div class="modal small"><div class="modal-head"><h2>الذاكرة</h2><button class="close" data-close="memoryModal">×</button></div><div class="modal-body">
+  <div class="setting-row"><div><b>إضافة ذكرى يدويًا</b><small>اكتب حقيقة عايز Barista يفتكرها.</small></div></div>
+  <form id="memoryAddForm" style="display:flex;gap:8px;margin:0 0 14px"><input id="memoryAddInput" type="text" placeholder="مثلاً: بحب الشرح المختصر بدون مقدمات" style="flex:1;min-width:0" maxlength="300"><button type="submit" class="mini-btn">إضافة</button></form>
+  <div id="memoryList"><p class="setting-row"><small>بتحمّل...</small></p></div>
+  <div class="setting-row"><div><b>مسح كل الذاكرة</b><small>هيمسح كل الحقايق اللي اتفتكرت عنك، من غير رجعة.</small></div><button id="memoryClearAll" class="mini-btn">مسح الكل</button></div>
+</div></div></div>
 
 <div id="premiumModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>Premium</h2><button class="close" data-close="premiumModal">×</button></div><div class="modal-body">
   <div class="premium-hero"><h3>خطط Barista AI</h3><p>اختار الباقة المناسبة لك. كود التفعيل موجود هنا فقط، داخل لوحة Premium.</p></div>
-  <div class="plans"><div class="plan"><b>Free</b><span>25 رصيد يوميًا<br>كل الموديلات</span></div><div class="plan"><b>GPT · $3</b><span>100 رصيد يوميًا<br>حدود أعلى</span></div><div class="plan"><b>Go · $7</b><span>300 رصيد يوميًا<br>ملفات أكبر</span></div><div class="plan"><b>Plus · $15</b><span>1000 رصيد يوميًا<br>حدود أعلى جدًا</span></div><div class="plan"><b>God · $30</b><span>استخدام غير محدود<br>أعلى أولوية</span></div></div>
+  <div class="plans">
+    <div class="plan"><div class="plan-icon">◇</div><b>Free</b><span>25 رصيد يوميًا<br>كل الموديلات</span></div>
+    <div class="plan buy-plan" data-plan="gpt"><div class="plan-icon">◆</div><b>GPT</b><small class="plan-price">$4.99<i>/شهر</i></small><span>100 رصيد يوميًا<br>حدود أعلى</span></div>
+    <div class="plan popular buy-plan" data-plan="go"><span class="plan-badge">الأكثر طلبًا</span><div class="plan-icon">✦</div><b>Go</b><small class="plan-price">$8.99<i>/شهر</i></small><span>300 رصيد يوميًا<br>ملفات أكبر</span></div>
+    <div class="plan buy-plan" data-plan="plus"><div class="plan-icon">✷</div><b>Plus</b><small class="plan-price">$14.99<i>/شهر</i></small><span>1000 رصيد يوميًا<br>حدود أعلى جدًا</span></div>
+    <div class="plan god"><div class="plan-icon">✺</div><b>God</b><span>استخدام غير محدود<br>بالتفعيل أو كهدية فقط</span></div>
+  </div>
+  <div id="providerPicker" class="provider-picker hidden">
+    <div class="result" style="color:var(--muted2);margin-bottom:8px">اختار وسيلة الدفع لباقة <b id="pickPlanName"></b>:</div>
+    <div class="provider-row">
+      <button class="provider-btn" data-provider="paymob">💳 Paymob<small>فيزا / محافظ / فوري</small></button>
+      <button class="provider-btn" data-provider="fawry">🧾 Fawry<small>ادفع في أي فرع</small></button>
+      <button class="provider-btn" data-provider="stripe">🌍 Stripe<small>فيزا عالمي</small></button>
+    </div>
+  </div>
   <div class="redeem"><input id="redeemCode" class="field" placeholder="كود التفعيل"><button id="redeemBtn" class="action">تفعيل</button></div><div id="redeemResult" class="result"></div>
 </div></div></div>
 
-<div id="accountModal" class="overlay hidden"><div class="modal small"><div class="modal-head"><h2>الحساب</h2><button class="close" data-close="accountModal">×</button></div><div class="modal-body"><div class="account-stats"><div class="stat"><small>الباقة</small><b id="accPlan">—</b></div><div class="stat"><small>الرسائل المستخدمة</small><b id="accUsed">0</b></div><div class="stat"><small>المتاح اليوم</small><b id="accLeft">—</b></div></div><p class="control-note">الحساب مربوط بـ Clerk، واستخدام الرسائل محفوظ في MongoDB. زر التصفير يعيد عداد الاستخدام اليومي فقط.</p><button id="resetMine" class="action" style="width:100%">تصفير رسائلي</button><div id="accountResult" class="result"></div></div></div></div>
+<div id="adminModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>Admin Dashboard</h2><button class="close" data-close="adminModal">×</button></div><div class="modal-body">
+  <div id="adminNote" class="control-note"></div>
+  <div class="account-stats" id="adminStatsGrid" style="grid-template-columns:repeat(4,1fr)"></div>
+  <h3 style="margin:18px 0 8px;font-size:13px">المستخدمين حسب الباقة</h3>
+  <div class="table-wrap"><table class="users"><thead><tr><th>الباقة</th><th>عدد المستخدمين</th></tr></thead><tbody id="adminPlansTable"></tbody></table></div>
+  <h3 style="margin:18px 0 8px;font-size:13px">صحة الـ Providers</h3>
+  <div class="table-wrap"><table class="users"><thead><tr><th>Provider</th><th>Model</th><th>نجاح</th><th>فشل</th><th>متوسط الاستجابة</th></tr></thead><tbody id="adminProvidersTable"></tbody></table></div>
+  <h3 style="margin:18px 0 8px;font-size:13px">الإيرادات (7 أيام)</h3>
+  <div class="table-wrap"><table class="users"><thead><tr><th>العملة</th><th>الإجمالي</th></tr></thead><tbody id="adminRevenueTable"></tbody></table></div>
+  <button id="adminRefreshBtn" class="mini-btn" style="margin-top:14px">تحديث</button>
+</div></div></div>
 
 <div id="ownerModal" class="overlay hidden"><div class="modal"><div class="modal-head"><h2>Owner Control</h2><button class="close" data-close="ownerModal">×</button></div><div class="modal-body">
   <p class="control-note">لوحة تحكم المالك: المستخدمون، الباقات، الأكواد، وعدادات الرسائل.</p>
@@ -171,36 +330,197 @@ body{background:#000;color:#f2f2f2}
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const state={clerk:null,account:null,chatId:null,model:'barista-just',files:[],isOwner:false};
+const state={clerk:null,account:null,chatId:null,model:'barista-just',files:[],isOwner:false,projectId:null,projectName:'مساحة عامة'};
 const models=[
+ {id:'barista-auto',number:'00',name:'Barista Brain',desc:'يختار أفضل موديل تلقائيًا حسب طلبك',level:0},
  {id:'barista-fast',number:'01',name:'Barista Fast',desc:'أسرع موديل للمحادثات اليومية',level:0},
  {id:'barista-just',number:'02',name:'Barista JUST',desc:'المساعد الرئيسي للاستخدام العام',level:1},
  {id:'barista-code',number:'03',name:'Barista Code',desc:'برمجة وتصحيح وبناء المشاريع',level:2},
- {id:'barista-reasoning',number:'04',name:'Barista Reasoning',desc:'تحليل ومسائل متعددة الخطوات',level:3}
+ {id:'barista-reasoning',number:'04',name:'Barista Reasoning',desc:'تحليل ومسائل متعددة الخطوات',level:3},
+ {id:'barista-image',number:'05',name:'Barista Image',desc:'توليد صور بالذكاء الاصطناعي من وصف نصي',level:2}
 ];
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
 function hasArabic(s){return /[\u0600-\u06ff]/.test(s)}
 function textDir(s){const m=String(s??'').match(/[A-Za-z\u0600-\u06FF]/);return m&&/[\u0600-\u06FF]/.test(m[0])?'rtl':'ltr'}
 function renderText(text){
  let s=esc(text);
- s=s.replace(/```([\s\S]*?)```/g,(_,x)=>`<pre><code>${x.replace(/^\w+\n/,'')}</code></pre>`);
+ s=s.replace(/```(\w*)\n?([\s\S]*?)```/g,(_,lang,code)=>{
+  const label=lang||'code';
+  const cls=lang?` class="language-${lang}"`:'';
+  return `<div class="code-block"><div class="code-head"><span>${esc(label)}</span><button type="button" class="copy-code">نسخ</button></div><pre><code${cls}>${code}</code></pre></div>`;
+ });
  s=s.replace(/`([^`]+)`/g,'<span class="inline-code">$1</span>');
+ s=s.replace(/!\[([^\]]*)\]\((data:image\/[a-zA-Z0-9.+-]+;base64,[A-Za-z0-9+/=]+|https:\/\/[^\s)]+)\)/g,(_,alt,url)=>`<div class="gen-image"><img src="${url}" alt="${alt||'صورة مولّدة'}" loading="lazy"><a class="download-file" href="${url}" download="barista-image.png">↓ تحميل الصورة</a></div>`);
  s=s.replace(/^### (.*)$/gm,'<h4>$1</h4>').replace(/^## (.*)$/gm,'<h3>$1</h3>').replace(/^# (.*)$/gm,'<h2>$1</h2>');
  s=s.replace(/^[-•] (.*)$/gm,'<li>$1</li>').replace(/(?:<li>.*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`);
  s=s.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>');
  s=s.replace(/\n\n+/g,'</p><p>').replace(/\n/g,'<br>');
  return `<div dir="${textDir(text)}"><p>${s}</p></div>`;
 }
+function hl(container){container.querySelectorAll('pre code').forEach(el=>{try{window.hljs&&hljs.highlightElement(el)}catch{}})}
+function renderInto(el,text){el.innerHTML=renderText(text);hl(el);return el}
+function wantsImage(t){return /(ارسم|صمم\s?(لي)?\s?(صورة|لوجو|شعار)|اعمل\s?صورة|ولد\s?صورة|أنشئ\s?صورة|generate (an )?image|draw (a|an|me)|create (an )?image|make (an )?image|image of|picture of)/i.test(String(t||''))}
 function scroll(){const c=$('#center');requestAnimationFrame(()=>c.scrollTop=c.scrollHeight)}
 function toast(msg,danger=false){const t=document.createElement('div');t.textContent=msg;t.style.cssText=`position:fixed;bottom:95px;left:50%;transform:translateX(-50%);z-index:300;background:${danger?'#3a1e22':'#202227'};border:1px solid ${danger?'#6b333a':'#3a3c42'};padding:10px 14px;border-radius:11px;font-size:11px;box-shadow:0 15px 45px #0009`;document.body.append(t);setTimeout(()=>t.remove(),2600)}
 async function token(){try{return state.clerk?.session?await state.clerk.session.getToken():null}catch{return null}}
 async function api(url,opt={}){const t=await token();const headers={...(opt.headers||{})};if(t)headers.Authorization='Bearer '+t;const r=await fetch(url,{...opt,headers});const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{throw Error('السيرفر رجّع رد غير صالح')};if(!r.ok)throw Error(d.error||'حدث خطأ');return d}
-function addMessage(role,text,typing=false){const row=document.createElement('div');row.className='msg-row '+role;const wrap=document.createElement('div');wrap.className='message-wrap';const label=document.createElement('div');label.className='role';label.textContent=role==='user'?'أنت':'Barista';const bubble=document.createElement('div');bubble.className='bubble';bubble.innerHTML=typing?'<div class="typing"><div class="thinking-icon"><div class="thinking-ring"></div></div><div class="thinking-copy"><b>Barista يفكر</b><span>جاري تجهيز الرد</span></div><div class="thinking-dots"><i></i><i></i><i></i></div></div>':renderText(text);wrap.append(label,bubble);row.append(wrap);$('#messages').append(row);$('.welcome')?.remove();scroll();return bubble}
-function newChat(){state.chatId=null;$('#messages').innerHTML='<div class="welcome"><div class="welcome-card"><div class="hero"><span>☕</span></div><h1>Barista AI</h1><p>اكتب سؤالك أو ارفع صورة أو ملف، ونبدأ.</p><div class="quick"><button data-q="اشرح لي فكرة برمجية ببساطة">اشرحلي</button><button data-q="راجع هذا الكود وابحث عن الأخطاء">راجع كود</button><button data-q="اعمل لي خطة قوية لتعلم البرمجة">خطة برمجة</button></div></div></div>';loadChats()}
-function renderModels(){const menu=$('#modelMenu');menu.innerHTML=models.map(m=>`<button class="model-option ${state.model===m.id?'selected':''}" data-model="${m.id}"><div class="model-icon number">${m.number}</div><div class="model-copy"><b>${m.name}</b><span>${m.desc}</span></div><small class="model-level">متاح · استهلاك ${m.level===0?'1':m.level===1?'2':m.level===2?'3':'4'} رصيد</small></button>`).join('')}
+function addMessage(role,text,typing=false){const row=document.createElement('div');row.className='msg-row '+role;const wrap=document.createElement('div');wrap.className='message-wrap';const label=document.createElement('div');label.className='role';label.textContent=role==='user'?'أنت':'Barista';const bubble=document.createElement('div');bubble.className='bubble';if(typing){bubble.innerHTML='<div class="typing"><div class="thinking-icon"><div class="thinking-ring"></div></div><div class="thinking-copy"><b>Barista يفكر</b><span>جاري تجهيز الرد</span></div><div class="thinking-dots"><i></i><i></i><i></i></div></div>'}else{renderInto(bubble,text)}wrap.append(label,bubble);row.append(wrap);$('#messages').append(row);$('.welcome')?.remove();scroll();return bubble}
+function newChat(){state.chatId=null;$('#messages').innerHTML='<div class="welcome"><div class="welcome-card"><div class="hero"><span>🌙</span></div><h1>Barista AI</h1><p>اكتب سؤالك، اطلب صورة، أو ارفع ملفًا ونبدأ فورًا.</p><div class="quick"><button data-q="اشرح لي فكرة برمجية ببساطة">💡 اشرحلي</button><button data-q="راجع هذا الكود وابحث عن الأخطاء">🛠 راجع كود</button><button data-q="اعمل لي خطة قوية لتعلم البرمجة">📈 خطة تعلم</button><button data-q="ارسم لي صورة إبداعية">🎨 ولّد صورة</button></div></div></div>';loadChats();$('#sidebar').classList.remove('open')}
+
+// ---- Projects: switcher + CRUD + archive. Switching sets state.projectId, which
+// scopes chat list/creation, messages, memory, and files to that project only —
+// nothing here ever queries chats/tasks without passing the current projectId,
+// so projects can never bleed into each other on the client either. ----
+function projectQS(){return state.projectId?('?projectId='+encodeURIComponent(state.projectId)):''}
+async function loadProjects(){
+  try{
+    const archived=$('#showArchived').checked?'true':'';
+    const d=await api('/api/projects'+(archived?'?archived=true':''));
+    const items=d.items||[];
+    $('#projectsList').innerHTML=items.length?items.map(p=>`
+      <div class="setting-row" data-project-row="${esc(p.id)}">
+        <div style="min-width:0;flex:1;cursor:pointer" data-open-project="${esc(p.id)}" data-name="${esc(p.name)}">
+          <b>${esc(p.name)}${p.archived?' <small style="color:var(--muted2)">(مؤرشف)</small>':''}</b>
+          <small>${p.chatCount} محادثة · ${p.fileCount} ملف</small>
+        </div>
+        <div class="actions">
+          <button data-switch-project="${esc(p.id)}" data-name="${esc(p.name)}">فتح</button>
+          <button data-edit-project="${esc(p.id)}">إعدادات</button>
+        </div>
+      </div>`).join(''):'<p class="setting-row"><small>لا يوجد مشاريع بعد.</small></p>';
+  }catch(e){toast(e.message,true)}
+}
+function setActiveProject(id,name){
+  state.projectId=id||null; state.projectName=name||'مساحة عامة';
+  $('#projectSwitchLabel').textContent='📁 '+state.projectName;
+  newChat();
+}
+async function openProjectEdit(id){
+  try{
+    const d=await api('/api/projects');
+    const p=(d.items||[]).find(x=>x.id===id) || (await api('/api/projects?archived=true')).items?.find(x=>x.id===id);
+    if(!p) return toast('المشروع غير موجود',true);
+    $('#projectEditModal').dataset.id=id;
+    $('#editProjectName').value=p.name;
+    $('#editProjectInstructions').value=p.instructions||'';
+    $('#toggleArchiveProject').textContent=p.archived?'إلغاء الأرشفة':'أرشفة';
+    $('#projectEditResult').textContent='';
+    $('#projectsModal').classList.add('hidden');
+    $('#projectEditModal').classList.remove('hidden');
+  }catch(e){toast(e.message,true)}
+}
+$('#projectSwitchBtn').onclick=()=>{$('#projectsModal').classList.remove('hidden');loadProjects()};
+$('#workspaceItem').onclick=()=>{setActiveProject(null,'مساحة عامة');$('#projectsModal').classList.add('hidden')};
+$('#showArchived').onchange=loadProjects;
+$('#createProjectForm').onsubmit=async e=>{e.preventDefault();const name=$('#newProjectName').value.trim();if(!name)return;try{const p=await api('/api/projects',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})});$('#newProjectName').value='';await loadProjects();setActiveProject(p.id,p.name);$('#projectsModal').classList.add('hidden')}catch(e){toast(e.message,true)}};
+$('#projectsList').onclick=e=>{
+  const sw=e.target.closest('[data-switch-project]');
+  if(sw){setActiveProject(sw.dataset.switchProject,sw.dataset.name);$('#projectsModal').classList.add('hidden');return}
+  const ed=e.target.closest('[data-edit-project]');
+  if(ed){openProjectEdit(ed.dataset.editProject);return}
+  const row=e.target.closest('[data-open-project]');
+  if(row){setActiveProject(row.dataset.openProject,row.dataset.name);$('#projectsModal').classList.add('hidden')}
+};
+$('#saveProjectName').onclick=async()=>{const id=$('#projectEditModal').dataset.id;const name=$('#editProjectName').value.trim();if(!name)return;try{await api('/api/projects?id='+encodeURIComponent(id),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})});if(state.projectId===id)setActiveProject(id,name);$('#projectEditResult').textContent='تم الحفظ'}catch(e){$('#projectEditResult').textContent=e.message;$('#projectEditResult').className='result danger'}};
+$('#saveProjectInstructions').onclick=async()=>{const id=$('#projectEditModal').dataset.id;try{await api('/api/projects?id='+encodeURIComponent(id),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({instructions:$('#editProjectInstructions').value})});$('#projectEditResult').textContent='تم حفظ التعليمات';$('#projectEditResult').className='result'}catch(e){$('#projectEditResult').textContent=e.message;$('#projectEditResult').className='result danger'}};
+$('#toggleArchiveProject').onclick=async()=>{const id=$('#projectEditModal').dataset.id;const archiving=$('#toggleArchiveProject').textContent==='أرشفة';try{await api('/api/projects?id='+encodeURIComponent(id),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({archived:archiving})});if(archiving&&state.projectId===id)setActiveProject(null,'مساحة عامة');$('#projectEditModal').classList.add('hidden');$('#projectsModal').classList.remove('hidden');await loadProjects()}catch(e){$('#projectEditResult').textContent=e.message;$('#projectEditResult').className='result danger'}};
+$('#deleteProjectBtn').onclick=async()=>{const id=$('#projectEditModal').dataset.id;if(!confirm('حذف المشروع نهائيًا مع كل محادثاته وملفاته؟'))return;try{await api('/api/projects?id='+encodeURIComponent(id),{method:'DELETE'});if(state.projectId===id)setActiveProject(null,'مساحة عامة');$('#projectEditModal').classList.add('hidden')}catch(e){$('#projectEditResult').textContent=e.message;$('#projectEditResult').className='result danger'}};
+
+// ---- Chat Search: real UI over /api/chat-search (keyword + date range + real
+// offset pagination), scoped server-side to the caller's own chats only. Opening a
+// result switches the active project first (if the chat belongs to one other than
+// the current context) so the opened chat's project instructions/isolation stay
+// consistent with everywhere else in the app. ----
+state.searchOffset=0;
+function resultRow(r){
+  const dt=new Date(r.updatedAt).toLocaleString('ar-EG');
+  return `<div class="setting-row" data-open-result="${esc(r.chatId)}" data-project="${r.projectId?esc(r.projectId):''}" style="cursor:pointer">
+    <div style="min-width:0;flex:1">
+      <b>${esc(r.title||'محادثة')}</b>
+      <small>${esc((r.snippet||'').replace(/\s+/g,' ').slice(0,140))}</small>
+    </div>
+    <span class="setting-state">${dt}</span>
+  </div>`;
+}
+async function runSearch(offset=0){
+  const q=$('#searchQuery').value.trim(); if(!q)return;
+  state.searchOffset=offset;
+  const params=new URLSearchParams({q,offset:String(offset)});
+  if($('#searchFrom').value)params.set('from',$('#searchFrom').value);
+  if($('#searchTo').value)params.set('to',$('#searchTo').value);
+  try{
+    const d=await api('/api/chat-search?'+params.toString());
+    $('#searchMeta').textContent=`${d.total} نتيجة`;
+    $('#searchResults').innerHTML=(d.results||[]).length?d.results.map(resultRow).join(''):'<p class="setting-row"><small>لا نتائج.</small></p>';
+    const pages=[];
+    if(offset>0)pages.push(`<button class="mini-btn" data-page="${Math.max(0,offset-d.pageSize)}">« السابق</button>`);
+    if(d.hasMore)pages.push(`<button class="mini-btn" data-page="${offset+d.pageSize}">التالي »</button>`);
+    $('#searchPager').innerHTML=pages.join('');
+  }catch(e){toast(e.message,true)}
+}
+$('#searchBtn').onclick=()=>{$('#searchModal').classList.remove('hidden');$('#searchQuery').focus()};
+$('#searchForm').onsubmit=e=>{e.preventDefault();runSearch(0)};
+$('#searchPager').onclick=e=>{const b=e.target.closest('[data-page]');if(b)runSearch(Number(b.dataset.page))};
+$('#searchResults').onclick=e=>{
+  const row=e.target.closest('[data-open-result]'); if(!row)return;
+  const chatId=row.dataset.openResult; const projectId=row.dataset.project||null;
+  if(projectId!==state.projectId){state.projectId=projectId||null;state.projectName=projectId?'مشروع':'مساحة عامة';$('#projectSwitchLabel').textContent='📁 '+state.projectName}
+  $('#searchModal').classList.add('hidden');
+  loadChats(); openChat(chatId);
+};
+// ---- Tasks: full CRUD scoped to the active project (or the general workspace when
+// projectId is null), same endpoint the Agent itself writes to via create_task/
+// update_task — so a plan the Agent makes and the checklist here are one list. ----
+function taskRow(t){
+  return `<div class="setting-row" data-task-row="${esc(t.id)}">
+    <label style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer">
+      <input type="checkbox" data-toggle-task="${esc(t.id)}" ${t.done?'checked':''}>
+      <span style="flex:1;min-width:0;${t.done?'text-decoration:line-through;color:var(--muted2)':''}">${esc(t.title)}</span>
+    </label>
+    <span class="setting-state" style="margin-inline-end:8px">${t.priority==='high'?'🔴':t.priority==='low'?'🟢':'🟡'}${t.dueDate?' '+new Date(t.dueDate).toLocaleDateString('ar-EG'):''}</span>
+    <div class="actions"><button data-move-task="${esc(t.id)}" data-dir="up">↑</button><button data-move-task="${esc(t.id)}" data-dir="down">↓</button><button data-delete-task="${esc(t.id)}">حذف</button></div>
+  </div>`;
+}
+async function loadTasks(){
+  try{
+    $('#tasksScopeLabel').textContent=state.projectId?('· '+state.projectName):'· مساحة عامة';
+    const d=await api('/api/tasks'+projectQS());
+    const items=d.items||[];
+    $('#tasksList').innerHTML=items.length?items.map(taskRow).join(''):'<p class="setting-row"><small>لا يوجد مهام بعد في هذا النطاق.</small></p>';
+  }catch(e){toast(e.message,true)}
+}
+$('#tasksBtn').onclick=()=>{$('#tasksModal').classList.remove('hidden');loadTasks()};
+$('#createTaskForm').onsubmit=async e=>{
+  e.preventDefault();
+  const title=$('#newTaskTitle').value.trim(); if(!title)return;
+  const priority=$('#newTaskPriority').value; const dueDate=$('#newTaskDue').value||undefined;
+  try{
+    const b={title,priority,dueDate}; if(state.projectId)b.projectId=state.projectId;
+    await api('/api/tasks',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});
+    $('#newTaskTitle').value='';$('#newTaskDue').value='';
+    await loadTasks();
+  }catch(e){toast(e.message,true)}
+};
+$('#tasksList').onclick=async e=>{
+  const del=e.target.closest('[data-delete-task]');
+  if(del){try{await api('/api/tasks?id='+encodeURIComponent(del.dataset.deleteTask),{method:'DELETE'});await loadTasks()}catch(x){toast(x.message,true)}return}
+  const mv=e.target.closest('[data-move-task]');
+  if(mv){
+    const rows=[...$('#tasksList').querySelectorAll('[data-task-row]')].map(r=>r.dataset.taskRow);
+    const i=rows.indexOf(mv.dataset.moveTask); if(i<0)return;
+    const j=mv.dataset.dir==='up'?i-1:i+1; if(j<0||j>=rows.length)return;
+    [rows[i],rows[j]]=[rows[j],rows[i]];
+    try{await api('/api/tasks?id='+encodeURIComponent(rows[0]),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({reorder:rows})});await loadTasks()}catch(x){toast(x.message,true)}
+  }
+};
+$('#tasksList').addEventListener('change',async e=>{
+  const cb=e.target.closest('[data-toggle-task]'); if(!cb)return;
+  try{await api('/api/tasks?id='+encodeURIComponent(cb.dataset.toggleTask),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({done:cb.checked})});await loadTasks()}catch(x){toast(x.message,true)}
+});
+function renderModels(){const menu=$('#modelMenu');menu.innerHTML=models.map(m=>`<button class="model-option ${state.model===m.id?'selected':''}" data-model="${m.id}"><div class="model-icon number">${m.number}</div><div class="model-copy"><b>${m.name}</b><span>${m.desc}</span></div><small class="model-level">متاح · استهلاك ${m.level+1} رصيد</small></button>`).join('')}
 function setModel(id){state.model=id;const m=models.find(x=>x.id===id);$('#modelLabel').textContent=m?.name||'Barista JUST';$('.model-number').textContent=m?.number||'02';$('#modelMenu').classList.remove('open');renderModels()}
-async function loadAccount(){const d=await api('/api/account');state.account=d.account;const a=d.account;$('#accountName').textContent=a.name||a.email;$('#accountPlan').textContent=`${a.planName} · ${a.dailyLimit===null?'غير محدود':`${Math.max(0,a.dailyLimit-a.dailyUsed)} رصيد متبقي`}`;if(a.imageUrl)$('#avatar').src=a.imageUrl;$('#accPlan').textContent=a.planName;$('#accUsed').textContent=a.dailyUsed;$('#accLeft').textContent=a.dailyLimit===null?'∞':Math.max(0,a.dailyLimit-a.dailyUsed);renderModels()}
-async function loadChats(){try{const d=await api('/api/chats');$('#chatList').innerHTML='<div class="chat-group">محادثاتك</div>'+(d.chats||[]).map(c=>`<button class="chat-item ${state.chatId==c._id?'active':''}" data-id="${esc(c._id)}">${esc(c.title||'محادثة جديدة')}</button>`).join('')}catch{}}
+async function loadAccount(){const d=await api('/api/account');state.account=d.account;const a=d.account;$('#accountName').textContent=a.name||a.email;$('#accountPlan').textContent=`${a.planName} · ${a.dailyLimit===null?'غير محدود':`${Math.max(0,a.dailyLimit-a.dailyUsed)} رصيد متبقي`}`;if(a.imageUrl)$('#avatar').src=a.imageUrl;$('#settingsAccountEmail').textContent=a.email||'—';$('#settingsAccountPlan').textContent=a.planName||'Free';renderModels()}
+async function loadChats(){try{const d=await api('/api/chats'+projectQS());$('#chatList').innerHTML='<div class="chat-group">محادثاتك</div>'+(d.chats||[]).map(c=>`<button class="chat-item ${state.chatId==c._id?'active':''}" data-id="${esc(c._id)}">${esc(c.title||'محادثة جديدة')}</button>`).join('')}catch{}}
 async function openChat(id){try{const d=await api('/api/chat-history?id='+encodeURIComponent(id));state.chatId=id;$('#messages').innerHTML='';for(const m of d.chat.messages||[])addMessage(m.role,m.content);loadChats();$('#sidebar').classList.remove('open')}catch(e){toast(e.message,true)}}
 function showFiles(){const box=$('#attachPreview'),chip=box.querySelector('.chip');chip.innerHTML='<div class="file-stack" id="fileStack"></div><button id="removeFile" type="button">×</button>';const stack=$('#fileStack');state.files.forEach((f,i)=>{const item=document.createElement('div');item.className='file-mini';item.innerHTML=`<span class="file-dot">${f.type?.startsWith('image/')?'IMG':'FILE'}</span><span title="${esc(f.name)}">${esc(f.name)}</span><small>${Math.max(1,f.size/1024/1024).toFixed(1)}MB</small>`;stack.append(item)});box.classList.toggle('show',state.files.length>0);$('#removeFile').onclick=clearFiles}
 function addFiles(list){const incoming=[...list].filter(Boolean);if(!incoming.length)return;const max=(state.account?.maxFileMB||5)*1024*1024;const tooBig=incoming.find(f=>f.size>max);if(tooBig){toast(`الملف ${tooBig.name} أكبر من الحد المسموح`,true);return}const total=state.files.reduce((n,f)=>n+f.size,0)+incoming.reduce((n,f)=>n+f.size,0);if(total>8*1024*1024){toast('إجمالي المرفقات في الرسالة لا يتجاوز 8MB',true);return}state.files.push(...incoming);showFiles()}
@@ -210,9 +530,35 @@ function downloadBlob(name,content,type='text/plain;charset=utf-8'){const blob=n
 function addReadyFiles(target,items){if(!items?.length)return;const box=document.createElement('div');box.className='file-ready';for(const item of items){const b=document.createElement('button');b.className='download-file';b.type='button';b.textContent='↓ تحميل '+item.name;b.onclick=()=>{if(item.content!==undefined)downloadBlob(item.name,item.content,item.mime);else if(item.original){const url=URL.createObjectURL(item.original);const a=document.createElement('a');a.href=url;a.download=item.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}};box.appendChild(b)}target.appendChild(box)}
 async function prepareTextFiles(items,instruction){const out=[];for(const a of items){if(a.type!=='text')continue;try{const d=await api('/api/modify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:a.name,content:a.text,instruction:instruction||'راجع الملف وحسّنه وأصلح الأخطاء إن وجدت، ثم أعد الملف كاملًا جاهزًا للاستخدام.'})});out.push({name:a.name,content:d.content,mime:a.mime||'text/plain'})}catch(e){out.push({name:a.name,content:a.text,mime:a.mime||'text/plain'})}}return out}
 
-async function send(text){text=String(text||'').trim();const files=[...state.files];if(!text&&!files.length)return;let msg=text,attachments=[];const converted=files.length?await Promise.all(files.slice(0,20).map(fileToAttachment)):[];if(converted.length){for(const a of converted){if(a.type==='image'){attachments.push(a);msg+=(msg?'\n\n':'')+`[صورة مرفقة: ${a.name}]\nحلل الصورة المرفقة وأجب عن طلبي.`}else if(a.type==='text'){msg+=(msg?'\n\n':'')+`[ملف مرفق: ${a.name}]\nمحتوى الملف:\n${a.text}`}else msg+=(msg?'\n\n':'')+`[ملف مرفق: ${a.name}]\nالنوع: ${a.mime}\nالحجم: ${a.size} bytes\nتم إرفاق الملف كما هو.`}}state.files=[];clearFiles();$('#plusMenu').classList.remove('open');addMessage('user',text||`تم إرفاق ${files.length} ملف`);const pending=addMessage('assistant','',true);pending.setAttribute('aria-label','Barista is thinking');$('#input').value='';autoGrow();try{const d=await api('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg||'حلل الملفات المرفقة وقدّم نتيجة مفيدة.',model:state.model,chatId:state.chatId,attachments})});pending.innerHTML=renderText(d.reply);state.chatId=String(d.chatId);if(state.account){state.account.dailyUsed=d.dailyUsed;$('#accountPlan').textContent=`${state.account.planName} · ${d.dailyLimit===null?'غير محدود':`${Math.max(0,d.dailyLimit-d.dailyUsed)} رصيد متبقي`}`}if(converted.length){const ready=await prepareTextFiles(converted,text);const originals=converted.filter(a=>a.type==='file').map(a=>({name:a.name,original:a.original,mime:a.mime}));addReadyFiles(pending.parentElement,[...ready,...originals])}loadChats();scroll()}catch(e){pending.innerHTML=`<span class="danger">${esc(e.message)}</span>`}}
+async function send(text){text=String(text||'').trim();const files=[...state.files];if(!text&&!files.length)return;let msg=text,attachments=[];const converted=files.length?await Promise.all(files.slice(0,20).map(fileToAttachment)):[];if(converted.length){for(const a of converted){if(a.type==='image'){attachments.push(a);msg+=(msg?'\n\n':'')+`[صورة مرفقة: ${a.name}]\nحلل الصورة المرفقة وأجب عن طلبي.`}else if(a.type==='text'){msg+=(msg?'\n\n':'')+`[ملف مرفق: ${a.name}]\nمحتوى الملف:\n${a.text}`}else msg+=(msg?'\n\n':'')+`[ملف مرفق: ${a.name}]\nالنوع: ${a.mime}\nالحجم: ${a.size} bytes\nتم إرفاق الملف كما هو.`}}state.files=[];clearFiles();$('#plusMenu').classList.remove('open');addMessage('user',text||`تم إرفاق ${files.length} ملف`);const pending=addMessage('assistant','',true);pending.setAttribute('aria-label','Barista is thinking');$('#input').value='';autoGrow();try{const useModel=(!files.length&&wantsImage(text))?'barista-image':state.model;const d=await api('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg||'حلل الملفات المرفقة وقدّم نتيجة مفيدة.',model:useModel,chatId:state.chatId,attachments,projectId:state.projectId||undefined})});pending.innerHTML=renderText(d.reply);hl(pending);state.chatId=String(d.chatId);if(state.account){state.account.dailyUsed=d.dailyUsed;$('#accountPlan').textContent=`${state.account.planName} · ${d.dailyLimit===null?'غير محدود':`${Math.max(0,d.dailyLimit-d.dailyUsed)} رصيد متبقي`}`}if(converted.length){const ready=await prepareTextFiles(converted,text);const originals=converted.filter(a=>a.type==='file').map(a=>({name:a.name,original:a.original,mime:a.mime}));addReadyFiles(pending.parentElement,[...ready,...originals])}loadChats();scroll()}catch(e){pending.innerHTML=`<span class="danger">${esc(e.message)}</span>`}}
 function autoGrow(){const i=$('#input');i.style.height='auto';i.style.height=Math.min(i.scrollHeight,180)+'px'}
-async function loadOwner(){state.isOwner=false;$('#ownerBadge').classList.add('hidden');$('#controlBtn').classList.add('hidden');try{const d=await api('/api/owner');if(d.owner!==true)throw Error('OWNER_ONLY');state.isOwner=true;$('#ownerBadge').classList.remove('hidden');$('#controlBtn').classList.remove('hidden');$('#ownerCodes').innerHTML=d.codes.map(c=>`<div class="code-pill">${esc(c)}</div>`).join('');$('#ownerUsers').innerHTML=d.users.map(u=>`<tr><td>${esc(u.email||'—')}</td><td>${esc(u.plan||'free')}${u.unlimited?' ∞':''}</td><td>${u.premiumExpiresAt?new Date(u.premiumExpiresAt).toLocaleDateString('ar-EG'):'∞'}</td><td>${u.dailyUsed||0}</td><td><div class="actions"><button data-owner="reset-limit" data-email="${esc(u.email)}">تصفير</button><button data-owner="remove" data-email="${esc(u.email)}">إزالة</button></div></td></tr>`).join('');renderGifts(d.gifts||[])}catch{state.isOwner=false}}
+async function loadOwner(){state.isOwner=false;$('#ownerBadge').classList.add('hidden');$('#controlBtn').classList.add('hidden');$('#adminDashBtn').classList.add('hidden');try{const d=await api('/api/owner');if(d.owner!==true)throw Error('OWNER_ONLY');state.isOwner=true;$('#ownerBadge').classList.remove('hidden');$('#controlBtn').classList.remove('hidden');$('#adminDashBtn').classList.remove('hidden');$('#ownerCodes').innerHTML=d.codes.map(c=>`<div class="code-pill">${esc(c)}</div>`).join('');$('#ownerUsers').innerHTML=d.users.map(u=>`<tr><td>${esc(u.email||'—')}</td><td>${esc(u.plan||'free')}${u.unlimited?' ∞':''}</td><td>${u.premiumExpiresAt?new Date(u.premiumExpiresAt).toLocaleDateString('ar-EG'):'∞'}</td><td>${u.dailyUsed||0}</td><td><div class="actions"><button data-owner="reset-limit" data-email="${esc(u.email)}">تصفير</button><button data-owner="remove" data-email="${esc(u.email)}">إزالة</button></div></td></tr>`).join('');renderGifts(d.gifts||[])}catch{state.isOwner=false}}
+
+// ---- Admin Dashboard: read-only view over /api/admin, which itself is gated
+// server-side by BARISTA_OWNER_EMAIL — this button is only ever shown after
+// /api/owner already confirmed the signed-in user is the owner, and the modal's
+// own fetch will 403 regardless if that ever stops being true (e.g. session change). ----
+async function loadAdminDashboard(){
+  try{
+    const d=await api('/api/admin');
+    $('#adminNote').textContent=d.note||'';
+    $('#adminNote').style.display=d.note?'block':'none';
+    const stats=[
+      ['إجمالي المستخدمين',d.users.total],
+      ['نشطين آخر 24 ساعة',d.users.active24h],
+      ['طلبات آخر 24 ساعة',d.requests24h],
+      ['أخطاء سيرفر (500+) آخر 24 ساعة',d.serverErrors24h],
+      ['طلبات دفع فاشلة (24 س)',d.failedOrders24h],
+      ['فشل Automations (24 س)',d.automationFailures24h],
+    ];
+    $('#adminStatsGrid').innerHTML=stats.map(([label,val])=>`<div class="stat"><small>${esc(label)}</small><b>${val ?? 0}</b></div>`).join('');
+    $('#adminPlansTable').innerHTML=Object.entries(d.users.byPlan||{}).map(([plan,count])=>`<tr><td>${esc(plan)}</td><td>${count}</td></tr>`).join('')||'<tr><td colspan="2">لا بيانات</td></tr>';
+    $('#adminProvidersTable').innerHTML=(d.providers||[]).map(p=>`<tr><td>${esc(p.provider)}</td><td>${esc(p.model)}</td><td>${p.success}</td><td>${p.failure}</td><td>${p.avgLatencyMs!=null?p.avgLatencyMs+'ms':'—'}</td></tr>`).join('')||'<tr><td colspan="5">لا بيانات Provider لسه</td></tr>';
+    $('#adminRevenueTable').innerHTML=Object.entries(d.revenue7d||{}).map(([cur,total])=>`<tr><td>${esc(cur)}</td><td>${total}</td></tr>`).join('')||'<tr><td colspan="2">لا إيرادات مسجلة آخر 7 أيام</td></tr>';
+  }catch(e){toast(e.message,true)}
+}
+$('#adminDashBtn').onclick=()=>{$('#adminModal').classList.remove('hidden');loadAdminDashboard()};
+$('#adminRefreshBtn').onclick=loadAdminDashboard;
 function renderGifts(gifts){const el=$('#giftList');if(!el)return;el.innerHTML=gifts.length?gifts.map(g=>{const target=g.target==='all'?'كل المستخدمين':g.target==='country'?`دولة ${esc(g.country)}`:esc(g.email||'شخص');const dur=`${g.durationValue} ${({days:'يوم',weeks:'أسبوع',months:'شهر',years:'سنة'})[g.durationUnit]||g.durationUnit}`;return `<div class="gift-item"><div class="gift-main"><b>${esc(g.name)} · ${esc(g.plan.toUpperCase())}</b><small>${target} · ${dur} · الاستخدام ${g.claims||0}${g.maxClaims?' / '+g.maxClaims:''}</small></div><span class="gift-status ${g.active?'':'off'}">${g.active?'مفعلة':'متوقفة'}</span><div class="gift-actions"><button data-gift="toggle" data-id="${g.id}">${g.active?'إيقاف':'تشغيل'}</button><button data-gift="delete" data-id="${g.id}">حذف</button></div></div>`}).join(''):'<div class="control-note">مفيش هدايا منشأة حاليًا.</div>'}
 async function initClerk(){
  try{
@@ -223,23 +569,49 @@ async function initClerk(){
    new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=`https://${domain}/npm/@clerk/clerk-js@6/dist/clerk.browser.js`;s.crossOrigin='anonymous';s.setAttribute('data-clerk-publishable-key',key);s.onload=resolve;s.onerror=()=>reject(Error('تعذر تحميل ClerkJS'));document.head.appendChild(s)})
   ]);
   if(!window.Clerk)throw Error('ClerkJS لم يتم تحميله.');
-  await window.Clerk.load({ui:{ClerkUI:window.__internal_ClerkUICtor},appearance:{variables:{colorPrimary:'#2f6fed',colorBackground:'#171717',colorForeground:'#f5f5f5',colorText:'#f5f5f5',colorTextSecondary:'#a3a3a3',colorInputBackground:'#212121',colorInputText:'#ffffff',colorNeutral:'#a3a3a3',borderRadius:'0.85rem'},options:{socialButtonsPlacement:'top',socialButtonsVariant:'blockButton'},elements:{rootBox:'width:100%;',card:'background:#171717;border:0;box-shadow:none;width:100%;padding:8px;',headerTitle:'color:#ffffff;font-weight:750;',headerSubtitle:'color:#a3a3a3;',formFieldLabel:'color:#e5e5e5;font-weight:600;',formFieldInput:'background:#212121!important;border:1px solid #454545!important;color:#ffffff!important;border-radius:12px!important;box-shadow:none!important;',formFieldInputShowPasswordButton:'color:#b5b5b5;',formButtonPrimary:'background:#2f6fed!important;color:#ffffff!important;border-radius:12px!important;box-shadow:none!important;font-weight:700;',socialButtonsBlockButton:'background:#212121!important;border:1px solid #454545!important;color:#f5f5f5!important;border-radius:12px!important;box-shadow:none!important;',socialButtonsBlockButtonText:'color:#f5f5f5!important;',dividerLine:'background:#454545;',dividerText:'color:#8f8f8f;',footerActionText:'color:#a3a3a3;',footerActionLink:'color:#8ab4ff!important;font-weight:600;',identityPreviewText:'color:#f5f5f5;',formResendCodeLink:'color:#8ab4ff!important;',otpCodeFieldInput:'background:#212121!important;color:#ffffff!important;border-color:#454545!important;',alertText:'color:#fca5a5;',formFieldErrorText:'color:#fca5a5;',formFieldAction:'color:#8ab4ff!important;',selectButton:'background:#1f1f1f;color:#f5f5f5;border-color:#454545;',selectButton__countryCode:'color:#f5f5f5;',modalContent:'background:#2a2a2a;color:#f5f5f5;'}}});
+  await window.Clerk.load({ui:{ClerkUI:window.__internal_ClerkUICtor},appearance:{variables:{colorPrimary:'#6d5bff',colorBackground:'#171717',colorForeground:'#f5f5f5',colorText:'#f5f5f5',colorTextSecondary:'#a3a3a3',colorInputBackground:'#212121',colorInputText:'#ffffff',colorNeutral:'#a3a3a3',borderRadius:'0.85rem'},options:{socialButtonsPlacement:'top',socialButtonsVariant:'blockButton'},elements:{rootBox:'width:100%;',card:'background:#171717;border:0;box-shadow:none;width:100%;padding:8px;',headerTitle:'color:#ffffff;font-weight:750;',headerSubtitle:'color:#a3a3a3;',formFieldLabel:'color:#e5e5e5;font-weight:600;',formFieldInput:'background:#212121!important;border:1px solid #454545!important;color:#ffffff!important;border-radius:12px!important;box-shadow:none!important;',formFieldInputShowPasswordButton:'color:#b5b5b5;',formButtonPrimary:'background:#6d5bff!important;color:#ffffff!important;border-radius:12px!important;box-shadow:none!important;font-weight:700;',socialButtonsBlockButton:'background:#212121!important;border:1px solid #454545!important;color:#f5f5f5!important;border-radius:12px!important;box-shadow:none!important;',socialButtonsBlockButtonText:'color:#f5f5f5!important;',dividerLine:'background:#454545;',dividerText:'color:#8f8f8f;',footerActionText:'color:#a3a3a3;',footerActionLink:'color:#8ab4ff!important;font-weight:600;',identityPreviewText:'color:#f5f5f5;',formResendCodeLink:'color:#8ab4ff!important;',otpCodeFieldInput:'background:#212121!important;color:#ffffff!important;border-color:#454545!important;',alertText:'color:#fca5a5;',formFieldErrorText:'color:#fca5a5;',formFieldAction:'color:#8ab4ff!important;',selectButton:'background:#1f1f1f;color:#f5f5f5;border-color:#454545;',selectButton__countryCode:'color:#f5f5f5;',modalContent:'background:#2a2a2a;color:#f5f5f5;'}}});
   state.clerk=window.Clerk;
   if(!state.clerk.isSignedIn){$('#clerkBox').innerHTML='';state.clerk.mountSignIn($('#clerkBox'));state.clerk.addListener(()=>{if(state.clerk.isSignedIn)location.reload()});return}
   $('#authScreen').classList.add('hidden');$('#app').classList.remove('hidden');$('#userButton').innerHTML='';state.clerk.mountUserButton($('#userButton'));newChat();await loadAccount();await loadOwner();
  }catch(e){$('#clerkBox').innerHTML=`<div class="error-card"><b>تعذر تشغيل تسجيل الدخول</b><br>${esc(e.message)}<br><small>راجع Publishable Key وطرق الدخول في Clerk ثم اعمل Redeploy.</small></div>`}
 }
-$('#modelBtn').onclick=e=>{e.stopPropagation();$('#plusMenu').classList.remove('open');$('#modelMenu').classList.toggle('open')};$('#modelMenu').onclick=e=>{const b=e.target.closest('[data-model]');if(b)setModel(b.dataset.model)};document.addEventListener('click',e=>{if(!e.target.closest('.model-wrap'))$('#modelMenu').classList.remove('open');if(!e.target.closest('.plus-wrap'))$('#plusMenu').classList.remove('open')});
-$('#settingsBtn').onclick=()=>$('#settingsModal').classList.remove('hidden');$('#enterSend').onchange=e=>{state.enterSend=e.target.checked};$('#newChat').onclick=newChat;$('#mobileMenu').onclick=()=>$('#sidebar').classList.add('open');$('#plusBtn').onclick=e=>{e.stopPropagation();$('#modelMenu').classList.remove('open');$('#plusMenu').classList.toggle('open')};
+$('#modelBtn').onclick=e=>{e.stopPropagation();$('#plusMenu').classList.remove('open');$('#modelMenu').classList.toggle('open')};$('#modelMenu').onclick=e=>{const b=e.target.closest('[data-model]');if(b)setModel(b.dataset.model)};document.addEventListener('click',e=>{if(!e.target.closest('.model-wrap'))$('#modelMenu').classList.remove('open');if(!e.target.closest('.plus-wrap'))$('#plusMenu').classList.remove('open');if(!e.target.closest('.sidebar')&&!e.target.closest('#mobileMenu'))$('#sidebar').classList.remove('open')});
+const ENTER_SEND_KEY='barista:enterSend';
+state.enterSend=localStorage.getItem(ENTER_SEND_KEY)!=='off';
+$('#enterSend').checked=state.enterSend;
+$('#settingsBtn').onclick=()=>$('#settingsModal').classList.remove('hidden');$('#enterSend').onchange=e=>{state.enterSend=e.target.checked;localStorage.setItem(ENTER_SEND_KEY,state.enterSend?'on':'off')};$('#newChat').onclick=newChat;$('#mobileMenu').onclick=e=>{e.stopPropagation();$('#sidebar').classList.add('open')};$('#plusBtn').onclick=e=>{e.stopPropagation();$('#modelMenu').classList.remove('open');$('#plusMenu').classList.toggle('open')};
+$('#signOutBtn').onclick=async()=>{try{await state.clerk?.signOut();location.reload()}catch{location.reload()}};
+async function loadMemory(){const box=$('#memoryList');box.innerHTML='<p class="setting-row"><small>بتحمّل...</small></p>';try{const d=await api('/api/memory');if(!d.items.length){box.innerHTML='<p class="setting-row"><small>مفيش حاجة متفتكرة لسه — Barista هيفتكر حاجات تلقائيًا من كلامك، أو ضيف واحدة يدويًا فوق.</small></p>';return}box.innerHTML=d.items.map(i=>`<div class="setting-row"><div><small>${esc(i.text)}</small></div><button class="mini-btn" data-mem-del="${i.id}">حذف</button></div>`).join('')}catch(e){box.innerHTML=`<p class="setting-row"><small>تعذر تحميل الذاكرة: ${esc(e.message)}</small></p>`}}
+$('#openMemoryBtn').onclick=()=>{$('#memoryModal').classList.remove('hidden');loadMemory()};
+$('#memoryList').onclick=async e=>{const b=e.target.closest('[data-mem-del]');if(!b)return;b.disabled=true;try{await api('/api/memory?id='+b.dataset.memDel,{method:'DELETE'});loadMemory()}catch(err){alert(err.message)}};
+$('#memoryAddForm').onsubmit=async e=>{e.preventDefault();const inp=$('#memoryAddInput');const text=inp.value.trim();if(!text)return;try{await api('/api/memory',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});inp.value='';loadMemory()}catch(err){alert(err.message)}};
+$('#memoryClearAll').onclick=async()=>{if(!confirm('متأكد عايز تمسح كل حاجة Barista فاكرها عنك؟'))return;try{await api('/api/memory?id=all',{method:'DELETE'});loadMemory()}catch(err){alert(err.message)}};
+$$('.overlay').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.add('hidden')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$$('.overlay:not(.hidden)').forEach(ov=>ov.classList.add('hidden'))});
 $$('[data-attach]').forEach(b=>b.onclick=()=>{const t=b.dataset.attach;$('#plusMenu').classList.remove('open');if(t==='image')$('#imageFile').click();else if(t==='folder')$('#folderFile').click();else if(t==='camera')$('#cameraFile').click();else $('#file').click()});
 $('#file').onchange=e=>{addFiles(e.target.files);e.target.value=''};$('#imageFile').onchange=e=>{addFiles(e.target.files);e.target.value=''};$('#folderFile').onchange=e=>{addFiles(e.target.files);e.target.value=''};$('#cameraFile').onchange=e=>{addFiles(e.target.files);e.target.value=''};
 $('#form').onsubmit=e=>{e.preventDefault();send($('#input').value)};$('#input').addEventListener('input',autoGrow);$('#input').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&(state.enterSend!==false)){e.preventDefault();send($('#input').value)}});
 $('#chatList').onclick=e=>{const b=e.target.closest('[data-id]');if(b)openChat(b.dataset.id)};
 $('#sidePremium').onclick=()=>$('#premiumModal').classList.remove('hidden');$$('[data-close]').forEach(b=>b.onclick=()=>$('#'+b.dataset.close).classList.add('hidden'));
-$('#accountBtn').onclick=()=>{$('#accountModal').classList.remove('hidden');$('#accPlan').textContent=state.account?.planName||'—';$('#accUsed').textContent=state.account?.dailyUsed||0;$('#accLeft').textContent=state.account?.dailyLimit===null?'∞':Math.max(0,(state.account?.dailyLimit||0)-(state.account?.dailyUsed||0))};
 $('#controlBtn').onclick=()=>{if(!state.isOwner)return;$('#ownerModal').classList.remove('hidden')};
-$('#resetMine').onclick=async()=>{try{await api('/api/account',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'reset-usage'})});await loadAccount();$('#accUsed').textContent='0';$('#accLeft').textContent=state.account?.dailyLimit===null?'∞':state.account?.dailyLimit;$('#accountResult').textContent='تم تصفير العداد.'}catch(e){$('#accountResult').textContent=e.message;$('#accountResult').className='result danger'}};
+$('#messages').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(b)send(b.dataset.q)});
+$('#messages').addEventListener('click',async e=>{const b=e.target.closest('.copy-code');if(!b)return;const code=b.closest('.code-block')?.querySelector('code');if(!code)return;try{await navigator.clipboard.writeText(code.textContent);const old=b.textContent;b.textContent='✓ اتنسخ';b.classList.add('copied');setTimeout(()=>{b.textContent=old;b.classList.remove('copied')},1600)}catch{toast('تعذر النسخ',true)}});
 $('#redeemBtn').onclick=async()=>{const code=$('#redeemCode').value.trim();if(!code)return;try{const d=await api('/api/redeem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});$('#redeemResult').textContent=d.message||'تم التفعيل بنجاح';$('#redeemResult').className='result';$('#redeemCode').value='';await loadAccount()}catch(e){$('#redeemResult').textContent=e.message;$('#redeemResult').className='result danger'}};
+
+let pickedPlan=null;
+const planNames={gpt:'GPT',go:'Go',plus:'Plus'};
+document.querySelectorAll('.buy-plan').forEach(el=>{el.onclick=()=>{pickedPlan=el.dataset.plan;$('#pickPlanName').textContent=planNames[pickedPlan]||pickedPlan;$('#providerPicker').classList.remove('hidden');$('#providerPicker').scrollIntoView({behavior:'smooth',block:'nearest'})}});
+document.querySelectorAll('.provider-btn').forEach(btn=>{btn.onclick=async()=>{
+  if(!pickedPlan)return;
+  const provider=btn.dataset.provider;
+  btn.disabled=true;const prevText=btn.innerHTML;btn.innerHTML='...جاري التجهيز';
+  try{
+    const d=await api('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:pickedPlan,provider,months:1})});
+    if(d.checkoutUrl){location.href=d.checkoutUrl}
+    else if(d.fawryRefNumber){$('#redeemResult').className='result';$('#redeemResult').textContent=`رقم مرجعي Fawry: ${d.fawryRefNumber} — ادفع بيه في أي فرع فوري خلال 6 ساعات.`}
+  }catch(e){$('#redeemResult').className='result danger';$('#redeemResult').textContent=e.message}
+  finally{btn.disabled=false;btn.innerHTML=prevText}
+}});
 $('#giftTarget').onchange=e=>{const v=e.target.value;$('#giftEmail').classList.toggle('hidden',v!=='user');$('#giftCountry').classList.toggle('hidden',v!=='country')};
 $('#createGiftBtn').onclick=async()=>{if(!state.isOwner)return;const target=$('#giftTarget').value;try{const d=await api('/api/owner',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'create-gift',name:$('#giftName').value,target,email:$('#giftEmail').value,country:$('#giftCountry').value,plan:$('#giftPlan').value,durationValue:Number($('#giftDurationValue').value),durationUnit:$('#giftDurationUnit').value,maxClaims:Number($('#giftMaxClaims').value||0)})});$('#giftResult').textContent='تم إنشاء الهدية بنجاح';$('#giftResult').className='result';$('#giftName').value='';await loadOwner()}catch(e){$('#giftResult').textContent=e.message;$('#giftResult').className='result danger'}};
 $('#giftList').onclick=async e=>{const b=e.target.closest('[data-gift]');if(!b||!state.isOwner)return;try{await api('/api/owner',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:b.dataset.gift==='toggle'?'toggle-gift':'delete-gift',id:b.dataset.id})});await loadOwner()}catch(x){toast(x.message,true)}};

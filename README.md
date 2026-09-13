@@ -17,7 +17,12 @@
 - MONGODB_URI
 - CLERK_PUBLISHABLE_KEY
 - CLERK_SECRET_KEY
-- BARISTA_OWNER_EMAIL (اختياري، الافتراضي هو بريد المالك المحدد في المشروع)
+- **BARISTA_OWNER_EMAIL (إلزامي دلوقتي)**: مفيش قيمة افتراضية تانية جوه الكود. من غيرها، `/api/owner` هيرجع خطأ 503 واضح بدل ما يفترض إيميل معين.
+- **BARISTA_REDEEM_CODES (موصى بيه بشدة)**: JSON سطر واحد فيه أكواد التفعيل الحقيقية، مثال:
+  `{"MYCODE":{"plan":"plus","months":1,"label":"Plus لمدة شهر"}}`
+  لو متسيبش، النظام بيشتغل بأكواد افتراضية قديمة موجودة في `api/_redeem-codes.js` (عشان محدش يتفاجئ إن أكواد قديمة بطلت تشتغل) — لكن لازم تنقلها هنا وتلغي/تغيّر أي كود فيه شك إنه اتسرب، لأن أي حد يقرأ الكود المصدري القديم كان بياخد بريميوم مجاني بلا داعي لأي مفتاح.
+- GROQ_CODE_MODEL / OPENROUTER_CODE_MODEL (اختياري، لتخصيص موديل أقوى لوضع Barista Code تحديدًا)
+- OPENROUTER_IMAGE_MODEL (اختياري، افتراضيًا `google/gemini-2.5-flash-image-preview` لتوليد الصور، ويحتاج مفتاح OpenRouter شغّال)
 
 لا يوجد ملف `.env` داخل هذه النسخة.
 
