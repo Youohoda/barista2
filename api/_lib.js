@@ -32,12 +32,31 @@ const UserSchema = new mongoose.Schema({
   unlimited: { type: Boolean, default: false },
   premiumExpiresAt: Date,
   redeemedCodes: { type: [String], default: [] },
+  giftClaims: { type: [String], default: [] },
   dailyUsed: { type: Number, default: 0 },
   dailyResetAt: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 }, { versionKey: false });
 export const User = mongoose.models.BaristaUser || mongoose.model('BaristaUser', UserSchema);
+
+const GiftSchema = new mongoose.Schema({
+  name: { type: String, default: 'هدية Barista' },
+  target: { type: String, enum: ['user','all','country'], required: true },
+  email: { type: String, lowercase: true, index: true },
+  country: { type: String, uppercase: true },
+  plan: { type: String, enum: ['gpt','go','plus','god'], required: true },
+  durationValue: { type: Number, required: true },
+  durationUnit: { type: String, enum: ['days','weeks','months','years'], required: true },
+  startsAt: { type: Date, default: Date.now },
+  endsAt: Date,
+  active: { type: Boolean, default: true },
+  maxClaims: { type: Number, default: 0 },
+  claims: { type: Number, default: 0 },
+  createdAt: { type: Date, default: Date.now }
+}, { versionKey: false });
+export const Gift = mongoose.models.BaristaGift || mongoose.model('BaristaGift', GiftSchema);
+
 
 export function json(res, status, data) {
   res.status(status).setHeader('Content-Type', 'application/json; charset=utf-8');

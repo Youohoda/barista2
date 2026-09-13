@@ -1,4 +1,4 @@
-import { db, User, json, body } from './_lib.js';
+import { db, User, Gift, json, body } from './_lib.js';
 import { requireUser } from './auth.js';
 
 const PLAN={
@@ -19,7 +19,31 @@ export default async function handler(req,res){
   try{
     const actor=await requireUser(req); await db();
     let doc=await User.findOne({clerkId:actor.id});
+    if(!doc && actor.email) doc=await User.findOne({email:actor.email.toLowerCase()});
     if(!doc) doc=await User.create({clerkId:actor.id,email:actor.email,displayName:[actor.firstName,actor.lastName].filter(Boolean).join(' ')||actor.email});
+    else { doc.clerkId=actor.id; doc.email=actor.email.toLowerCase(); }
+    // Apply eligible owner-created gifts once per account.
+    const country=String(req.headers['x-vercel-ip-country']||req.headers['x-country']||'').toUpperCase();
+    const now=new Date();
+    const gifts=await Gift.find({active:true,startsAt:{$lte:now},$or:[{endsAt:null},{endsAt:{$gt:now}}]}).limit(100).lean();
+    const levels={free:0,gpt:1,go:2,plus:3,god:4};
+    for(const g of gifts){
+      const eligible=(g.target==='all')||(g.target==='user'&&g.email===actor.email.toLowerCase())||(g.target==='country'&&g.country===country);
+      if(!eligible || (doc.giftClaims||[]).includes(String(g._id))) continue;
+      if(g.maxClaims>0 && g.claims>=g.maxClaims) continue;
+      let end=new Date(now);
+      if(g.durationUnit==='days') end.setDate(end.getDate()+g.durationValue);
+      else if(g.durationUnit==='weeks') end.setDate(end.getDate()+g.durationValue*7);
+      else if(g.durationUnit==='months') end.setMonth(end.getMonth()+g.durationValue);
+      else end.setFullYear(end.getFullYear()+g.durationValue);
+      if(g.plan==='god'){
+        doc.plan='god'; doc.unlimited=false; doc.premiumExpiresAt=end;
+      }else if(levels[g.plan]>levels[doc.plan||'free'] || !doc.premiumExpiresAt || new Date(doc.premiumExpiresAt)<end){
+        doc.plan=g.plan; doc.unlimited=false; doc.premiumExpiresAt=end;
+      }
+      doc.giftClaims=doc.giftClaims||[]; doc.giftClaims.push(String(g._id));
+      await Gift.updateOne({_id:g._id,active:true},{$inc:{claims:1}});
+    }
 
     if(req.method==='POST'){
       const b=await body(req);
